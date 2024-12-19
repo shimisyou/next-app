@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
+import { useState } from "react";
 import rehypeSanitize from "rehype-sanitize";
 
 type MarkdownEditorProps = {
@@ -13,16 +14,16 @@ export const MarkdownEditor = ({
   placeholder,
   onChange,
 }: MarkdownEditorProps) => {
+  const [value, setValue] = useState(defaultValue);
   const handleChange = (value?: string) => {
-    if (onChange) {
-      onChange(value);
-    }
+    setValue(value || "");
+    onChange(value || "");
   };
 
   return (
     <Box data-color-mode="light">
       <MDEditor
-        value={defaultValue}
+        value={value}
         textareaProps={{
           placeholder: placeholder,
         }}

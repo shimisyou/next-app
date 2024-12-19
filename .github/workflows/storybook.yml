@@ -28,11 +28,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 4. Storybookのビルド
+      # 4. Storybook テストの実行
+      - name: Run Storybook Tests
+        run: npm run test-storybook
+
+      # 5. Storybookのビルド
       - name: Build Storybook
         run: npm run build-storybook
 
-      # 5. ビルド結果をGitHub Pagesにデプロイ
+      # 6. ビルド結果をGitHub Pagesにデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

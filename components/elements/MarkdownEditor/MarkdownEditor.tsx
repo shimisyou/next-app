@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
-import MDEditor from "@uiw/react-md-editor";
-import { useState } from "react";
-import rehypeSanitize from "rehype-sanitize";
+import { Box } from '@mui/material';
+import MDEditor from '@uiw/react-md-editor';
+import { useState } from 'react';
+import rehypeSanitize from 'rehype-sanitize';
 
 type MarkdownEditorProps = {
   defaultValue: string;
@@ -16,8 +16,8 @@ export const MarkdownEditor = ({
 }: MarkdownEditorProps) => {
   const [value, setValue] = useState(defaultValue);
   const handleChange = (value?: string) => {
-    setValue(value || "");
-    onChange(value || "");
+    setValue(value || '');
+    onChange(value || '');
   };
 
   return (

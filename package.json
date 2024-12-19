@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -38,7 +39,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.11.1",
+    "husky": "^9.1.7",
     "playwright": "^1.49.1",
     "storybook": "^8.4.7",
     "typescript": "^5"

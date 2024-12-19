@@ -1,9 +1,9 @@
-import { SampleForm } from "./SampleForm";
-import { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within, fn } from "@storybook/test";
+import { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
+import { SampleForm } from './SampleForm';
 
 const meta = {
-  title: "features/sample/SampleForm",
+  title: 'features/sample/SampleForm',
   component: SampleForm,
 } satisfies Meta<typeof SampleForm>;
 
@@ -13,9 +13,9 @@ type Story = StoryObj<typeof meta>;
 
 export const SampleFormComponent: Story = {
   args: {
-    defaultValue: "",
-    placeholder: "markdown形式で入力",
+    defaultValue: '',
+    placeholder: 'markdown形式で入力',
     onChange: fn(),
   },
-  play: async ({ canvasElement, args, step }) => {},
+  play: async ({}) => {},
 };

@@ -1,12 +1,11 @@
 import { Box } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
-import { useState } from "react";
 import rehypeSanitize from "rehype-sanitize";
 
 type MarkdownEditorProps = {
   defaultValue: string;
   placeholder?: string;
-  onChange?: (value?: string) => void;
+  onChange: (value?: string) => void;
 };
 
 export const MarkdownEditor = ({
@@ -14,28 +13,22 @@ export const MarkdownEditor = ({
   placeholder,
   onChange,
 }: MarkdownEditorProps) => {
-  const [value, setValue] = useState(defaultValue);
-
-  const handleChange = (val?: string) => {
-    setValue(val || "");
+  const handleChange = (value?: string) => {
     if (onChange) {
-      onChange(val);
+      onChange(value);
     }
   };
 
   return (
     <Box data-color-mode="light">
       <MDEditor
-        value={value}
+        value={defaultValue}
         textareaProps={{
           placeholder: placeholder,
         }}
         onChange={handleChange}
         previewOptions={{
           rehypePlugins: [[rehypeSanitize]],
-        }}
-        style={{
-          minHeight: "300px",
         }}
       />
     </Box>

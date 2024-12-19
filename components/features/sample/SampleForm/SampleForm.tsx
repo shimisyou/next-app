@@ -8,7 +8,7 @@ interface SampleForm {
 }
 
 export const SampleForm = () => {
-  const { control, handleSubmit } = useForm<SampleForm>({
+  const { control, handleSubmit, getValues } = useForm<SampleForm>({
     defaultValues: { markdown: "", title: "" },
   });
 
@@ -29,7 +29,7 @@ export const SampleForm = () => {
             <TextField
               label="タイトル"
               required
-              defaultValue={field.value}
+              defaultValue={getValues("title")}
               onChange={field.onChange}
             />
           )}
@@ -39,7 +39,8 @@ export const SampleForm = () => {
           control={control}
           render={({ field }) => (
             <MarkdownEditor
-              defaultValue={field.value}
+              {...field}
+              defaultValue={getValues("markdown")}
               onChange={field.onChange}
               placeholder="本文を入力してくだい"
             />

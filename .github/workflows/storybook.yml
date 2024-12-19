@@ -3,14 +3,13 @@ name: Storybook CI
 on:
   push:
     branches:
-      - main # mainブランチでのプッシュ時にトリガー
+      - main
   pull_request:
     branches:
-      - main # mainブランチへのPR作成時にもトリガー
+      - main
 
 jobs:
   build:
-    name: Build and Deploy Storybook
     runs-on: ubuntu-latest
 
     steps:
@@ -18,27 +17,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Node.jsのセットアップ
+      # 2. Node.js のセットアップ
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20 # 使用しているNode.jsバージョンに合わせる
+          node-version: 20
 
       # 3. 依存関係のインストール
       - name: Install dependencies
         run: npm install
 
-      # 4. Storybook テストの実行
-      - name: Run Storybook Tests
+      # 4. Playwright のブラウザをインストール
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      # 5. Storybook テストランナーの実行
+      - name: Run Storybook Test Runner
         run: npm run test-storybook
 
-      # 5. Storybookのビルド
+      # 6. Storybook のビルド
       - name: Build Storybook
         run: npm run build-storybook
 
-      # 6. ビルド結果をGitHub Pagesにデプロイ
+      # 7. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: storybook-static # 直下のビルド結果ディレクトリを指定
+          publish_dir: storybook-static

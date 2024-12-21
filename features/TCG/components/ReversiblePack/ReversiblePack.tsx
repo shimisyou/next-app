@@ -28,7 +28,7 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
         height: '300px',
         overflow: 'hidden',
         zIndex: 2,
-        borderRadius: '12px', // カードの角を丸くする
+        borderRadius: '12px',
       }}
     >
       <CardContent
@@ -36,19 +36,17 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
           p: 0,
           width: '100%',
           height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          position: 'relative',
         }}
       >
         <Image
           src={url}
           alt={alt}
-          width={200}
-          height={300}
+          sizes="200px" // 固定サイズを指定
           style={{
             objectFit: 'cover',
           }}
+          fill
         />
       </CardContent>
     </Card>
@@ -56,23 +54,23 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
     <Box
       sx={{
         position: 'absolute',
-        top: '320px', // カードの下に余白を追加
+        top: '320px',
         width: '200px',
         height: '60px',
         overflow: 'hidden',
-        transform: 'scaleY(-1)', // 垂直反転
-        opacity: 0.3, // 透過
-        clipPath: 'inset(0px 0px 0px 0px round 0px 0px 12px 12px)', // 上は直角、下は丸角
+        transform: 'scaleY(-1)',
+        opacity: 0.3,
+        clipPath: 'inset(0px 0px 0px 0px round 0px 0px 12px 12px)',
       }}
     >
       <Image
         src={url}
         alt={`${alt} Reflection`}
-        width={200}
-        height={300}
+        sizes="200px" // 固定サイズを指定
         style={{
           objectFit: 'cover',
         }}
+        fill
       />
     </Box>
   </Box>
@@ -89,8 +87,8 @@ export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
       }}
       style={{
         width: '200px',
-        height: '400px', // 全体の高さを調整
-        overflow: 'visible', // 影画像が表示されるようにする
+        height: '400px',
+        overflow: 'visible',
       }}
       loop
     >

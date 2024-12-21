@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -32,7 +35,24 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook --quiet
 
-      # 6. GitHub Pages にデプロイ
+      # 6. Storybook をサーバーとして起動しテストを実行
+      - name: Serve Storybook and run tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. リポジトリをチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

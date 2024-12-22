@@ -12,6 +12,9 @@
     "test-storybook": "test-storybook",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "next lint --file"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -43,6 +46,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.11.1",
     "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "playwright": "^1.49.1",
     "storybook": "^8.4.7",
     "typescript": "^5"

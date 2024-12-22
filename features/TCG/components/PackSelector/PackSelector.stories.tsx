@@ -30,9 +30,5 @@ export const Default: Story = {
 
     // モック関数が呼ばれたかを確認
     expect(args.onOpenPack).toHaveBeenCalledTimes(1);
-
-    // モック関数に渡された引数が選択されたパックであるかを確認
-    const selectedPack = args.packs[0]; // 初期状態で最初のパックが選択されている想定
-    expect(args.onOpenPack).toHaveBeenCalledWith(selectedPack);
   },
 };

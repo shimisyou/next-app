@@ -15,7 +15,7 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
     sx={{
       position: 'relative',
       width: '200px',
-      height: '360px', // カードの高さ + 影画像分
+      height: '380px', // カードの高さ + 影画像分
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -44,7 +44,7 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
           alt={alt}
           sizes="200px" // 固定サイズを指定
           style={{
-            objectFit: 'cover',
+            objectFit: 'fill',
           }}
           fill
         />
@@ -87,8 +87,8 @@ export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
       }}
       style={{
         width: '200px',
-        height: '400px',
-        overflow: 'visible',
+        height: '360px',
+        overflow: 'hidden',
       }}
       loop
     >

@@ -53,11 +53,7 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      # 9. Next.js アプリのエクスポート
-      - name: Export Next.js app
-        run: npm run export
-
-      # 10. Next.js のビルド成果物を保存
+      # 9. Next.js のビルド成果物を保存
       - name: Upload Next.js artifact
         uses: actions/upload-artifact@v3
         with:

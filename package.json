@@ -10,8 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "prepare": "husky",
-    "export": "next export"
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "next lint --file"

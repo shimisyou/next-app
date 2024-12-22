@@ -17,76 +17,43 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Node.js のセットアップ
+      # 2. キャッシュ Node.js モジュール
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 3. Node.js のセットアップ
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      # 3. 依存関係のインストール
+      # 4. 依存関係のインストール
       - name: Install dependencies
         run: npm install
 
-      # 4. Playwright のブラウザをインストール
+      # 5. Playwright のブラウザをインストール
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 5. Storybook のビルド
+      # 6. Storybook のビルド
       - name: Build Storybook
         run: npm run build-storybook --quiet
 
-      # 6. Storybook をサーバーとして起動しテストを実行
+      # 7. Storybook をサーバーとして起動しテストを実行
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
 
-      # 7. Storybook のビルド成果物を保存
-      - name: Upload Storybook artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: storybook-static
-          path: storybook-static
-
-      # 8. Next.js アプリのビルド
-      - name: Build Next.js app
-        run: npm run build
-
-      # 9. Next.js のビルド成果物を保存
-      - name: Upload Next.js artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: next-app
-          path: out
-
-  deploy:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # 1. Storybook のビルド成果物をダウンロード
-      - name: Download Storybook artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: storybook-static
-          path: storybook-static
-
-      # 2. Next.js のビルド成果物をダウンロード
-      - name: Download Next.js artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: next-app
-          path: out
-
-      # 3. GitHub Pages にデプロイ
+      # 8. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: out
+          publish_dir: storybook-static

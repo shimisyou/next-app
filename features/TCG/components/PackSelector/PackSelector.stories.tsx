@@ -16,7 +16,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     packs: mockPacks,
-    onPackOpened: fn(),
+    onOpenPack: fn(),
+    onSlideChange: fn(),
   },
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
@@ -28,10 +29,6 @@ export const Default: Story = {
     await userEvent.click(openButton);
 
     // モック関数が呼ばれたかを確認
-    expect(args.onPackOpened).toHaveBeenCalledTimes(1);
-
-    // モック関数に渡された引数が選択されたパックであるかを確認
-    const selectedPack = args.packs[0]; // 初期状態で最初のパックが選択されている想定
-    expect(args.onPackOpened).toHaveBeenCalledWith(selectedPack);
+    expect(args.onOpenPack).toHaveBeenCalledTimes(1);
   },
 };

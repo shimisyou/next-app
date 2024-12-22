@@ -42,6 +42,28 @@ jobs:
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
 
+      # 7. Storybook のビルド成果物を保存
+      - name: Upload Storybook artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook-static
+          path: storybook-static
+
+      # 8. Next.js アプリのビルド
+      - name: Build Next.js app
+        run: npm run build
+
+      # 9. Next.js アプリのエクスポート
+      - name: Export Next.js app
+        run: npm run export
+
+      # 10. Next.js のビルド成果物を保存
+      - name: Upload Next.js artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-app
+          path: out
+
   deploy:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -52,8 +74,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 1. Storybook のビルド成果物をダウンロード
+      - name: Download Storybook artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-static
+          path: storybook-static
+
+      # 2. Next.js のビルド成果物をダウンロード
+      - name: Download Next.js artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: next-app
+          path: out
+
+      # 3. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: storybook-static
+          publish_dir: out

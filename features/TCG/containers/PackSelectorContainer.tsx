@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { CardSwiper } from '../components/CardSwiper/CardSwiper';
 import { PackSelector } from '../components/PackSelector/PackSelector';
 import { Pack } from '../types';
 
@@ -14,6 +15,7 @@ export const PackSelectorContainer = ({
   fallback,
 }: PackSelectorContainerProps) => {
   const [selectedPack, setSelectedPack] = useState<Pack | null>(null);
+  const [isPackOpened, setIsPackOpened] = useState(false);
 
   // packsのロードが完了したときに初期状態を設定
   useEffect(() => {
@@ -28,8 +30,13 @@ export const PackSelectorContainer = ({
 
   const handleOpenPack = () => {
     if (selectedPack) {
+      setIsPackOpened(true);
       console.log('Opened pack:', selectedPack);
     }
+  };
+
+  const handleOnClose = () => {
+    setIsPackOpened(false);
   };
 
   // packsがロードされていない場合のフォールバック
@@ -38,10 +45,18 @@ export const PackSelectorContainer = ({
   }
 
   return (
-    <PackSelector
-      packs={packs}
-      onSlideChange={handleSlideChange}
-      onOpenPack={handleOpenPack}
-    />
+    <>
+      {!isPackOpened ? (
+        <PackSelector
+          packs={packs}
+          onSlideChange={handleSlideChange}
+          onOpenPack={handleOpenPack}
+        />
+      ) : (
+        selectedPack && (
+          <CardSwiper cards={selectedPack.cards} onClose={handleOnClose} />
+        )
+      )}
+    </>
   );
 };

@@ -36,22 +36,31 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 5. Playwright のブラウザをインストール
+      # 5. キャッシュ Playwright ブラウザ
+      - name: Cache Playwright Browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      # 6. Playwright のブラウザをインストール
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # 6. Storybook のビルド
+      # 7. Storybook のビルド
       - name: Build Storybook
         run: npm run build-storybook --quiet
 
-      # 7. Storybook をサーバーとして起動しテストを実行
+      # 8. Storybook をサーバーとして起動しテストを実行
       - name: Serve Storybook and run tests
         run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
 
-      # 8. GitHub Pages にデプロイ
+      # 9. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

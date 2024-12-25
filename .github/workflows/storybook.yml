@@ -34,14 +34,14 @@ jobs:
 
       # 4. 依存関係のインストール
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # 5. キャッシュ Playwright ブラウザ
       - name: Cache Playwright Browsers
         uses: actions/cache@v3
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-playwright
           restore-keys: |
             ${{ runner.os }}-playwright-
 
@@ -51,14 +51,15 @@ jobs:
 
       # 7. Storybook のビルド
       - name: Build Storybook
-        run: npm run build-storybook --quiet
+        run: npm run build-storybook
 
       # 8. Storybook をサーバーとして起動しテストを実行
-      - name: Serve Storybook and run tests
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
+      - name: Start Storybook
+        run: npx http-server storybook-static --port 6006 &
+      - name: Wait for Storybook
+        run: npx wait-on tcp:127.0.0.1:6006
+      - name: Run tests
+        run: npm run test-storybook
 
       # 9. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages

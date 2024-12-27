@@ -1,12 +1,5 @@
 import { Pack } from '../types';
 
-// ランダムに色を生成
-const generateRandomColor = (): string => {
-  return Math.floor(Math.random() * 0xffffff)
-    .toString(16)
-    .padStart(6, '0');
-};
-
 // ランダムなレアリティを生成
 const generateRandomRarity = ():
   | 'ultra-rare'
@@ -29,7 +22,7 @@ const generateCards = (packId: number, cardCount: number) => {
       name: `Card ${cardId}`,
       rarity: generateRandomRarity(),
       img: {
-        url: `https://placehold.jp/${generateRandomColor()}/ffffff/150x200.png?text=Card+${cardId}`,
+        url: './cards/series1/04.png',
         alt: `Card ${cardId}`,
       },
     };
@@ -39,17 +32,16 @@ const generateCards = (packId: number, cardCount: number) => {
 // パックデータを生成
 export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
   const packId = index + 1;
-  const baseColor = generateRandomColor(); // 基本色を生成
   return {
     id: packId,
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `https://placehold.jp/${baseColor}/ffffff/200x300.png?text=Front+${packId}`,
+        url: `./pack1.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `https://placehold.jp/${baseColor}/ffffff/200x300.png?text=Back+${packId}`,
+        url: `./pack2.png`,
         alt: `Back of Pack ${packId}`,
       },
     },

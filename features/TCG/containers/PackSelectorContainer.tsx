@@ -60,3 +60,5 @@ export const PackSelectorContainer = ({
     </>
   );
 };
+
+export default PackSelectorContainer;

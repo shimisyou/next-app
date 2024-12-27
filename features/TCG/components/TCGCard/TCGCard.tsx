@@ -9,10 +9,12 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
       return {
         padding: '16px',
         borderColor: 'gold',
-        backgroundColor: 'rgba(255,223,0,0.15)',
-        boxShadow: '0 0 15px 5px rgba(255,223,0,0.8)',
+        backgroundColor: 'rgba(255,215,0,0.2)', // ゴールド系の背景
+        boxShadow: '0 0 20px 10px rgba(255,223,0,0.8)', // ゴールドの輝き
         animation: 'glow 2s infinite alternate',
-        rarityBackgroundColor: 'rgba(255,223,0,0.8)',
+        nameBackgroundColor: 'rgba(255,223,0,0.9)', // 明るいゴールド
+        nameTextColor: 'black',
+        rarityBackgroundColor: 'rgba(255,223,0,1)', // 濃いゴールド
         rarityTextColor: 'black',
         keyframes: `
           @keyframes glow {
@@ -21,35 +23,39 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
           }
         `,
       };
-    case 'rare':
-      return {
-        padding: '16px',
-        borderColor: 'goldenrod',
-        backgroundColor: 'rgba(255,215,0,0.12)',
-        boxShadow: '0 0 10px 3px rgba(255,215,0,0.6)',
-        animation: 'softGlow 3s infinite alternate',
-        rarityBackgroundColor: 'rgba(255,215,0,0.8)',
-        rarityTextColor: 'black',
-        keyframes: `
-          @keyframes softGlow {
-            0% { box-shadow: 0 0 10px 3px rgba(255,215,0,0.6); }
-            100% { box-shadow: 0 0 15px 5px rgba(255,215,0,0.8); }
-          }
-        `,
-      };
-    case 'uncommon':
+    case 'super-rare':
       return {
         padding: '16px',
         borderColor: 'steelblue',
-        backgroundColor: 'rgba(200,200,255,0.1)',
-        boxShadow: '0 0 8px 2px rgba(200,200,255,0.5)',
+        backgroundColor: 'rgba(173,216,230,0.2)', // 明るいブルー
+        boxShadow: '0 0 8px 2px rgba(70,130,180,0.5)', // 柔らかいブルー
         animation: 'subtlePulse 4s infinite alternate',
-        rarityBackgroundColor: 'rgba(200,200,255,0.8)',
+        nameBackgroundColor: 'rgba(100,149,237,0.9)', // 鮮やかなブルー
+        nameTextColor: 'white',
+        rarityBackgroundColor: 'rgba(70,130,180,1)', // 濃いブルー
         rarityTextColor: 'white',
         keyframes: `
           @keyframes subtlePulse {
-            0% { box-shadow: 0 0 8px 2px rgba(200,200,255,0.5); }
-            100% { box-shadow: 0 0 10px 4px rgba(200,200,255,0.7); }
+            0% { box-shadow: 0 0 8px 2px rgba(70,130,180,0.5); }
+            100% { box-shadow: 0 0 10px 4px rgba(70,130,180,0.7); }
+          }
+        `,
+      };
+    case 'rare':
+      return {
+        padding: '16px',
+        borderColor: 'silver',
+        backgroundColor: 'rgba(192,192,192,0.2)', // シルバー系の背景
+        boxShadow: '0 0 15px 5px rgba(192,192,192,0.8)', // シルバーの輝き
+        animation: 'softGlow 3s infinite alternate',
+        nameBackgroundColor: 'rgba(224,224,224,0.9)', // 明るいシルバー
+        nameTextColor: 'black',
+        rarityBackgroundColor: 'rgba(192,192,192,1)', // 濃いシルバー
+        rarityTextColor: 'black',
+        keyframes: `
+          @keyframes softGlow {
+            0% { box-shadow: 0 0 10px 3px rgba(192,192,192,0.6); }
+            100% { box-shadow: 0 0 15px 5px rgba(192,192,192,0.8); }
           }
         `,
       };
@@ -57,9 +63,11 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
       return {
         padding: '16px',
         borderColor: 'gray',
-        backgroundColor: 'rgba(240,240,240)',
+        backgroundColor: 'white', // シンプルな白
         boxShadow: 'none',
-        rarityBackgroundColor: 'rgba(240,240,240,0.8)',
+        nameBackgroundColor: 'rgba(240,240,240,0.9)', // 明るいグレー
+        nameTextColor: 'black',
+        rarityBackgroundColor: 'rgba(240,240,240,1)', // 濃いグレー
         rarityTextColor: 'black',
       };
   }
@@ -92,24 +100,20 @@ export const TCGCard = ({ card, onClick }: TCGCardProps) => {
     >
       <style>{rarityStyles.keyframes}</style>
 
-      {/* カード名を上部に固定配置 */}
+      {/* カード名をレアリティ風に表示 */}
       <Box
         sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '50px',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          textAlign: 'left',
+          backgroundColor: rarityStyles.nameBackgroundColor,
+          color: rarityStyles.nameTextColor,
+          padding: '8px 8px',
+          borderRadius: '8px 8px 0 0',
+          fontWeight: 'bold',
           zIndex: 3,
+          fontSize: '1rem',
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: 'white' }}>
-          {card.name}
-        </Typography>
+        <Typography variant="body1">{card.name}</Typography>
       </Box>
 
       {/* カードのメイン画像 */}
@@ -132,7 +136,7 @@ export const TCGCard = ({ card, onClick }: TCGCardProps) => {
           backgroundColor: rarityStyles.rarityBackgroundColor,
           color: rarityStyles.rarityTextColor,
           padding: '4px 8px',
-          borderRadius: '0 0 12px 12px',
+          borderRadius: '0 0 8px 8px',
           fontWeight: 'bold',
         }}
       >

@@ -4,12 +4,12 @@ import { Pack } from '../types';
 const generateRandomRarity = ():
   | 'ultra-rare'
   | 'rare'
-  | 'uncommon'
+  | 'super-rare'
   | 'common' => {
   const random = Math.random();
   if (random <= 0.001) return 'ultra-rare'; // 0.1%
-  if (random <= 0.2) return 'rare'; // 20%
-  if (random <= 0.5) return 'uncommon'; // 30%
+  if (random <= 0.2) return 'super-rare'; // 20%
+  if (random <= 0.5) return 'rare'; // 30%
   return 'common'; // 残りは common
 };
 
@@ -17,12 +17,16 @@ const generateRandomRarity = ():
 const generateCards = (packId: number, cardCount: number) => {
   return Array.from({ length: cardCount }, (_, index) => {
     const cardId = packId * 100 + index + 1;
+    const randomImageNumber = Math.floor(Math.random() * 10) + 1; // 1～10の範囲でランダムな数字を生成
     return {
       id: cardId,
       name: `Card ${cardId}`,
       rarity: generateRandomRarity(),
       img: {
-        url: './cards/series1/04.png',
+        url: `./cards/series1/${String(randomImageNumber).padStart(
+          2,
+          '0'
+        )}.png`, // ランダムな画像番号
         alt: `Card ${cardId}`,
       },
     };

@@ -32,17 +32,17 @@ export const Common: Story = {
   },
 };
 
-export const Uncommon: Story = {
-  args: {
-    card: { ...mockCard, rarity: 'uncommon' },
-    onClick: () => console.log('Uncommon card clicked'),
-  },
-};
-
 export const Rare: Story = {
   args: {
     card: { ...mockCard, rarity: 'rare' },
     onClick: () => console.log('Rare card clicked'),
+  },
+};
+
+export const SuperRare: Story = {
+  args: {
+    card: { ...mockCard, rarity: 'super-rare' },
+    onClick: () => console.log('SuperRare card clicked'),
   },
 };
 

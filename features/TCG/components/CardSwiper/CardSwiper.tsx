@@ -1,78 +1,128 @@
-import CloseIcon from '@mui/icons-material/Close';
-import { Box, IconButton } from '@mui/material';
-import { EffectCards } from 'swiper/modules';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+} from '@mui/material';
+import { useState } from 'react';
+import { EffectCards, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Card } from '../../types';
+import { Card as CardType } from '../../types';
 import { TCGCard } from '../TCGCard/TCGCard';
 
 type CardSwiperProps = {
-  cards: Card[];
+  cards: CardType[];
   onClose: () => void;
 };
 
 export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleReset = () => {
+    onClose();
+    setIsEnd(false);
+  };
+  const handleReachEnd = () => {
+    setIsEnd(true);
+  };
+
   return (
     <Box
       sx={{
-        position: 'relative',
-        width: '100%',
-        height: '100%',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 2, // 見切れ防止のための余白を追加
+        p: 4,
       }}
     >
-      {/* Close Button */}
-      <IconButton
-        onClick={onClose}
+      <Card
         sx={{
-          position: 'absolute',
-          top: 16,
-          right: 16,
-          zIndex: 10,
-        }}
-      >
-        <CloseIcon />
-      </IconButton>
-
-      {/* Swiper Component */}
-      <Swiper
-        slidesPerView={1}
-        modules={[EffectCards]}
-        effect="cards"
-        grabCursor
-        navigation
-        style={{
           width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        cardsEffect={{
-          perSlideOffset: 1,
-          rotate: false,
-          perSlideRotate: 0,
-          slideShadows: false,
+          maxWidth: '600px',
+          boxShadow: 3,
+          borderRadius: 4,
         }}
       >
-        {cards.map((card) => (
-          <SwiperSlide
-            key={card.id}
+        <CardHeader title="カードをめくろう" />
+        <CardContent
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: '24px',
+          }}
+        >
+          <Swiper
+            slidesPerView={1}
+            modules={[EffectCards, Navigation]}
+            effect="cards"
+            grabCursor
+            navigation={{
+              nextEl: '.swiper-button-next',
+            }}
+            pagination={{ clickable: true }}
+            oneWayMovement
+            speed={500}
+            nested
+            onReachEnd={handleReachEnd}
+            allowSlideNext={!isEnd}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%',
-              minHeight: '400px', // スライドの最低高さを設定
-              paddingBottom: '16px', // カードの下部が見切れないよう余白を設定
+              width: '100%',
+              overflow: 'visible',
+            }}
+            cardsEffect={{
+              perSlideOffset: 1,
+              rotate: false,
+              perSlideRotate: 0,
+              slideShadows: false,
             }}
           >
-            <TCGCard card={card} onClick={() => console.log(card)} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            {cards.map((card) => (
+              <SwiperSlide
+                key={card.id}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  overflow: 'visible',
+                }}
+              >
+                <TCGCard card={card} onClick={() => console.log(card)} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </CardContent>
+        <CardActions
+          sx={{
+            justifyContent: 'center',
+            minHeight: '64px', // ボタンの高さを固定
+            marginBottom: '8px', // Swiperとの隙間を調整
+          }}
+        >
+          {!isEnd ? (
+            <Button
+              key="next"
+              className="swiper-button-next"
+              variant="contained"
+              aria-label="めくる"
+            >
+              めくる
+            </Button>
+          ) : (
+            <Button
+              key="end"
+              variant="contained"
+              onClick={handleReset}
+              aria-label="終了"
+            >
+              終了
+            </Button>
+          )}
+        </CardActions>
+      </Card>
     </Box>
   );
 };

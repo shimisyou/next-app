@@ -30,13 +30,7 @@ export default function RootLayout({
           <Box bgcolor="black" padding={3} mb={3}>
             Header
           </Box>
-          <Container
-            maxWidth="lg"
-            disableGutters
-            sx={{ bgcolor: 'white', p: 4 }}
-          >
-            {children}
-          </Container>
+          <Container maxWidth="lg">{children}</Container>
         </Box>
       </body>
     </html>

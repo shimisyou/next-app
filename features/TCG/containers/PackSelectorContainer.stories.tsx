@@ -49,10 +49,5 @@ export const WithInteraction: Story = {
         expect(cardName).toBeInTheDocument();
       }
     });
-
-    await step('カードを閉じる', async () => {
-      const closeButton = await canvas.getByTestId('CloseIcon');
-      await userEvent.click(closeButton);
-    });
   },
 };

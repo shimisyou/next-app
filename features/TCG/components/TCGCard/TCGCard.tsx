@@ -75,73 +75,90 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
 
 type TCGCardProps = {
   card: CardType;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const TCGCard = ({ card, onClick }: TCGCardProps) => {
   const rarityStyles = getRarityStyles(card.rarity);
 
   return (
-    <MuiCard
-      onClick={onClick}
+    <Box
       sx={{
-        width: '80%',
         maxWidth: '300px',
-        borderRadius: 4,
-        overflow: 'hidden',
-        position: 'relative',
-        cursor: 'pointer',
-        padding: rarityStyles.padding,
-        border: `4px solid ${rarityStyles.borderColor}`,
-        backgroundColor: rarityStyles.backgroundColor,
-        boxShadow: rarityStyles.boxShadow,
-        animation: rarityStyles.animation,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
-      <style>{rarityStyles.keyframes}</style>
-
-      {/* カード名をレアリティ風に表示 */}
-      <Box
+      <MuiCard
+        onClick={onClick}
         sx={{
-          textAlign: 'left',
-          backgroundColor: rarityStyles.nameBackgroundColor,
-          color: rarityStyles.nameTextColor,
-          padding: '8px 8px',
-          borderRadius: '8px 8px 0 0',
-          fontWeight: 'bold',
-          zIndex: 3,
-          fontSize: '1rem',
+          borderRadius: 4,
+          padding: rarityStyles.padding,
+          border: `4px solid ${rarityStyles.borderColor}`,
+          backgroundColor: rarityStyles.backgroundColor,
+          boxShadow: rarityStyles.boxShadow,
+          animation: rarityStyles.animation,
+          transition: 'transform 0.2s', // ホバー時のアニメーションを追加
+          '&:hover': {
+            transform: 'scale(1.05)', // ホバー時に拡大
+          },
         }}
       >
-        <Typography variant="body1">{card.name}</Typography>
-      </Box>
+        <style>{rarityStyles.keyframes}</style>
 
-      {/* カードのメイン画像 */}
-      <CardContent sx={{ p: 0 }}>
-        <Image
-          src={card.img.url}
-          alt={card.img.alt}
-          layout="responsive"
-          width={300}
-          height={400}
-          objectFit="cover"
-          style={{ display: 'block', margin: 0 }}
-        />
-      </CardContent>
+        {/* カードのメイン画像 */}
+        <CardContent
+          sx={{
+            p: 0,
+            '&.MuiCardContent-root': { paddingBottom: 0 },
+          }}
+        >
+          <Box sx={{ maxWidth: '250px' }}>
+            {/* カード名をレアリティ風に表示 */}
+            <Box
+              sx={{
+                textAlign: 'left',
+                backgroundColor: rarityStyles.nameBackgroundColor,
+                color: rarityStyles.nameTextColor,
+                padding: '8px 8px',
+                borderRadius: '8px 8px 0 0',
+                fontWeight: 'bold',
+                fontSize: '1rem',
+              }}
+            >
+              <Typography variant="body1">{card.name}</Typography>
+            </Box>
+            <Image
+              src={card.img}
+              alt={card.name}
+              width={250}
+              height={375}
+              style={{
+                display: 'block',
+                margin: '0 auto',
+                width: '100%',
+              }}
+            />
 
-      {/* レアリティを下部に配置 */}
-      <Box
-        sx={{
-          textAlign: 'center',
-          backgroundColor: rarityStyles.rarityBackgroundColor,
-          color: rarityStyles.rarityTextColor,
-          padding: '4px 8px',
-          borderRadius: '0 0 8px 8px',
-          fontWeight: 'bold',
-        }}
-      >
-        <Typography variant="body2">{card.rarity.toUpperCase()}</Typography>
-      </Box>
-    </MuiCard>
+            {/* レアリティを下部に配置 */}
+            <Box
+              sx={{
+                textAlign: 'center',
+                backgroundColor: rarityStyles.rarityBackgroundColor,
+                color: rarityStyles.rarityTextColor,
+                padding: '4px 8px',
+                borderRadius: '0 0 8px 8px',
+                fontWeight: 'bold',
+              }}
+            >
+              <Typography variant="body2">
+                {card.rarity.toUpperCase()}
+              </Typography>
+            </Box>
+          </Box>
+        </CardContent>
+      </MuiCard>
+    </Box>
   );
 };

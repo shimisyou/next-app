@@ -5,50 +5,81 @@ import { TCGCard } from './TCGCard';
 // モックデータ
 const mockCard: Card = {
   id: 1,
-  name: 'Card',
+  name: 'Sample Card',
   rarity: 'common',
-  img: {
-    url: './cards/series1/09.png',
-    alt: 'Sample Card Image',
-  },
+  img: './cards/series1/09.png',
 };
 
+/**
+
+ * ## rarity
+ * - common: 最もレアリティが低いカード
+ * - rare: 通常レアリティのカード
+ * - super-rare: 中間レアリティのカード
+ * - ultra-rare: 最高レアリティのカード
+ */
 const meta: Meta<typeof TCGCard> = {
   title: 'features/TCG/TCGCard',
   component: TCGCard,
   tags: ['autodocs'],
-  argTypes: {},
+  parameters: {
+    componentSubtitle: 'カード自体を表示するコンポーネント',
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof TCGCard>;
 
-// レアリティごとのストーリー定義
+/**
+- 最もレアリティが低いカード
+**/
 export const Common: Story = {
   args: {
-    card: { ...mockCard, rarity: 'common' },
-    onClick: () => console.log('Common card clicked'),
+    card: mockCard,
   },
 };
 
+/**
+- 通常レアリティのカード
+- 銀色の影が伸び縮みするアニメーション付き
+**/
 export const Rare: Story = {
   args: {
-    card: { ...mockCard, rarity: 'rare' },
-    onClick: () => console.log('Rare card clicked'),
+    card: {
+      ...mockCard,
+      rarity: 'rare',
+      name: 'Rare Card',
+    },
   },
 };
 
+/**
+- 中間レアリティのカード
+- 青色の影が伸び縮みするアニメーション付き
+**/
 export const SuperRare: Story = {
   args: {
-    card: { ...mockCard, rarity: 'super-rare' },
-    onClick: () => console.log('SuperRare card clicked'),
+    card: {
+      ...mockCard,
+      rarity: 'super-rare',
+      name: 'Super Rare Card',
+      img: './cards/series1/09.png',
+    },
   },
 };
 
+/**
+- 最高レアリティのカード
+- 金色の影が伸び縮みするアニメーション付き
+**/
 export const UltraRare: Story = {
   args: {
-    card: { ...mockCard, rarity: 'ultra-rare' },
-    onClick: () => console.log('Ultra-Rare card clicked'),
+    card: {
+      ...mockCard,
+      rarity: 'ultra-rare',
+      name: 'Ultra Rare Card',
+      img: './cards/series1/09.png',
+    },
   },
 };

@@ -14,21 +14,15 @@ const generateRandomRarity = ():
 };
 
 // カードデータを生成
-const generateCards = (packId: number, cardCount: number) => {
+export const generateCards = (packId: number, cardCount: number) => {
   return Array.from({ length: cardCount }, (_, index) => {
-    const cardId = packId * 100 + index + 1;
+    const cardId = `${packId * 100 + index + 1}`; // idをstringに変更
     const randomImageNumber = Math.floor(Math.random() * 10) + 1; // 1～10の範囲でランダムな数字を生成
     return {
       id: cardId,
       name: `Card ${cardId}`,
       rarity: generateRandomRarity(),
-      img: {
-        url: `./cards/series1/${String(randomImageNumber).padStart(
-          2,
-          '0'
-        )}.png`, // ランダムな画像番号
-        alt: `Card ${cardId}`,
-      },
+      img: `/cards/series1/${String(randomImageNumber).padStart(2, '0')}.png`, // ランダムな画像番号
     };
   });
 };
@@ -41,11 +35,11 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `./pack1.png`,
+        url: `/pack1.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `./pack2.png`,
+        url: `/pack2.png`,
         alt: `Back of Pack ${packId}`,
       },
     },

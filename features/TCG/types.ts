@@ -11,8 +11,8 @@ type PackImage = {
 type Card = {
   id: number;
   name: string;
-  rarity: 'common' | 'super-rare' | 'rare' | 'ultra-rare'; // カードのレアリティ
-  img: PackImage; // カードの画像情報
+  rarity: 'common' | 'super-rare' | 'rare' | 'ultra-rare';
+  img: string;
 };
 
 type Pack = {

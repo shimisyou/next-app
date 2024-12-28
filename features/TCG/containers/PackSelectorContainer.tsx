@@ -1,12 +1,13 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { CardSwiper } from '../components/CardSwiper/CardSwiper';
 import { PackSelector } from '../components/PackSelector/PackSelector';
 import { Pack } from '../types';
 
 type PackSelectorContainerProps = {
-  packs: Pack[] | null;
+  packs: Pack[] | [];
   fallback: React.ReactNode;
 };
 
@@ -45,19 +46,21 @@ export const PackSelectorContainer = ({
   }
 
   return (
-    <>
+    <Box>
       {!isPackOpened ? (
-        <PackSelector
-          packs={packs}
-          onSlideChange={handleSlideChange}
-          onOpenPack={handleOpenPack}
-        />
+        <>
+          <PackSelector
+            packs={packs}
+            onSlideChange={handleSlideChange}
+            onOpenPack={handleOpenPack}
+          />
+        </>
       ) : (
         selectedPack && (
           <CardSwiper cards={selectedPack.cards} onClose={handleOnClose} />
         )
       )}
-    </>
+    </Box>
   );
 };
 

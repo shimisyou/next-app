@@ -22,7 +22,10 @@ export const generateCards = (packId: number, cardCount: number) => {
       id: cardId,
       name: `Card ${cardId}`,
       rarity: generateRandomRarity(),
-      img: `/cards/series1/${String(randomImageNumber).padStart(2, '0')}.png`, // ランダムな画像番号
+      img: `/next-app/cards/series1/${String(randomImageNumber).padStart(
+        2,
+        '0'
+      )}.png`, // ランダムな画像番号
     };
   });
 };
@@ -35,11 +38,11 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `/pack1.png`,
+        url: `/next-app/pack1.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `/pack2.png`,
+        url: `/next-app/pack2.png`,
         alt: `Back of Pack ${packId}`,
       },
     },

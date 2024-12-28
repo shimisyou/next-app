@@ -16,7 +16,7 @@ const generateRandomRarity = ():
 // カードデータを生成
 export const generateCards = (packId: number, cardCount: number) => {
   return Array.from({ length: cardCount }, (_, index) => {
-    const cardId = `${packId * 100 + index + 1}`; // idをstringに変更
+    const cardId = packId * 100 + index + 1; // idをnumberに変更
     const randomImageNumber = Math.floor(Math.random() * 10) + 1; // 1～10の範囲でランダムな数字を生成
     return {
       id: cardId,

@@ -51,7 +51,7 @@ jobs:
 
       # 7. Storybook のビルド
       - name: Build Storybook
-        run: npm run build-storybook
+        run: npm run build-storybook -- --base-href /next-app/
 
       # 8. Storybook をサーバーとして起動しテストを実行
       - name: Start Storybook

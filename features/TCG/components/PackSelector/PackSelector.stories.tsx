@@ -4,7 +4,7 @@ import { mockPacks } from '../../mocks/packs';
 import { PackSelector } from './PackSelector';
 
 const meta: Meta<typeof PackSelector> = {
-  title: 'features/TCG/PackSelector',
+  title: 'features/TCG/PackSelector/PackSelector',
   component: PackSelector,
   argTypes: {},
 };

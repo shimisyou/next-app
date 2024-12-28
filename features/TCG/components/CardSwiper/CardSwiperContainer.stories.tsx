@@ -4,7 +4,7 @@ import { generateCards } from '../../mocks/packs';
 import { CardSwiperContainer } from './CardSwiperContainer';
 
 const meta: Meta<typeof CardSwiperContainer> = {
-  title: 'Components/CardSwiperContainer',
+  title: 'features/TCG/CardSwiper/CardSwiperContainer',
   component: CardSwiperContainer,
   args: {
     cards: generateCards(1, 5),

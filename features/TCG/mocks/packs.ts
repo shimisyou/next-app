@@ -1,5 +1,8 @@
 import { Pack } from '../types';
 
+// ベースURLをパブリック環境変数から取得
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '/next-app';
+
 // ランダムなレアリティを生成
 const generateRandomRarity = ():
   | 'ultra-rare'
@@ -22,7 +25,7 @@ export const generateCards = (packId: number, cardCount: number) => {
       id: cardId,
       name: `Card ${cardId}`,
       rarity: generateRandomRarity(),
-      img: `/next-app/cards/series1/${String(randomImageNumber).padStart(
+      img: `${BASE_URL}/cards/series1/${String(randomImageNumber).padStart(
         2,
         '0'
       )}.png`, // ランダムな画像番号
@@ -38,11 +41,11 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `/next-app/pack1.png`,
+        url: `${BASE_URL}/pack1.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `/next-app/pack2.png`,
+        url: `${BASE_URL}/pack2.png`,
         alt: `Back of Pack ${packId}`,
       },
     },

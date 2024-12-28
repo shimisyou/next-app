@@ -56,6 +56,7 @@ export const Rare: Story = {
 
 /**
 - 中間レアリティのカード
+- 反射するキラエフェクト付き
 - 青色の影が伸び縮みするアニメーション付き
 **/
 export const SuperRare: Story = {
@@ -71,6 +72,7 @@ export const SuperRare: Story = {
 
 /**
 - 最高レアリティのカード
+- 反射するキラエフェクト付き
 - 金色の影が伸び縮みするアニメーション付き
 **/
 export const UltraRare: Story = {

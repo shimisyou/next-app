@@ -22,6 +22,31 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
             100% { box-shadow: 0 0 25px 10px rgba(255,223,0,1); }
           }
         `,
+        reflection: `
+          .reflection {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+          }
+          .reflection:after {
+            content: "";
+            height: 100%;
+            width: 30px;
+            position: absolute;
+            top: -180px;
+            left: 0;
+            background-color: #fff;
+            opacity: 0;
+            transform: rotate(45deg);
+            animation: reflection 2s ease-in-out infinite;
+          }
+          @keyframes reflection {
+            0% { transform: scale(0) rotate(45deg); opacity: 0; }
+            80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+            81% { transform: scale(4) rotate(45deg); opacity: 1; }
+            100% { transform: scale(50) rotate(45deg); opacity: 0; }
+          }
+        `,
       };
     case 'super-rare':
       return {
@@ -38,6 +63,31 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
           @keyframes subtlePulse {
             0% { box-shadow: 0 0 8px 2px rgba(70,130,180,0.5); }
             100% { box-shadow: 0 0 10px 4px rgba(70,130,180,0.7); }
+          }
+        `,
+        reflection: `
+          .reflection {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+          }
+          .reflection:after {
+            content: "";
+            height: 100%;
+            width: 30px;
+            position: absolute;
+            top: -180px;
+            left: 0;
+            background-color: #fff;
+            opacity: 0;
+            transform: rotate(45deg);
+            animation: reflection 2s ease-in-out infinite;
+          }
+          @keyframes reflection {
+            0% { transform: scale(0) rotate(45deg); opacity: 0; }
+            80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+            81% { transform: scale(4) rotate(45deg); opacity: 1; }
+            100% { transform: scale(50) rotate(45deg); opacity: 0; }
           }
         `,
       };
@@ -104,8 +154,10 @@ export const TCGCard = ({ card, onClick }: TCGCardProps) => {
             transform: 'scale(1.05)', // ホバー時に拡大
           },
         }}
+        className={rarityStyles.reflection ? 'reflection' : ''}
       >
         <style>{rarityStyles.keyframes}</style>
+        {rarityStyles.reflection && <style>{rarityStyles.reflection}</style>}
 
         {/* カードのメイン画像 */}
         <CardContent

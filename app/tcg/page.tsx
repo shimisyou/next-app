@@ -1,4 +1,4 @@
-import { PackSelectorContainer } from '@/features/TCG/containers/PackSelectorContainer';
+import { PackSelectorContainer } from '@/features/TCG/components/PackSelector/PackSelectorContainer';
 import { mockPacks } from '@/features/TCG/mocks/packs';
 
 const fetchPacks = async () => {

@@ -2,10 +2,10 @@ import { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import PackSelectorContainer from './PackSelectorContainer';
 
-import { mockPacks } from '../../TCG/mocks/packs';
+import { mockPacks } from '../../mocks/packs';
 
 const meta = {
-  title: 'Features/TCG/PackSelectorContainer',
+  title: 'features/TCG/PackSelector/PackSelectorContainer',
   component: PackSelectorContainer,
   args: {
     packs: mockPacks,

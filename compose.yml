@@ -1,9 +1,11 @@
 version: '3.9'
 services:
-  app:
+  next-app:
     build:
       context: .
       dockerfile: Dockerfile
+      cache_from:
+        - next-app:latest
     ports:
       - '3000:3000'
     volumes:
@@ -13,3 +15,4 @@ services:
     tty: true
     environment:
       - WATCHPACK_POLLING=true
+    command: npm run dev

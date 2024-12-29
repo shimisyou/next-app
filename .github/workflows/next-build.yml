@@ -39,3 +39,11 @@ jobs:
       # 5. Next.js のビルド
       - name: Build Next.js
         run: npm run build
+
+      # 6. GitHub Pages にデプロイ
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: out
+          destination_dir: next

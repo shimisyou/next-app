@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     domains: ['localhost', 'yourdomain.com'], // 必要なドメインを追加
   },
   distDir: '.next',
+  output: 'export', // 静的エクスポートを有効にする
   // ...existing code...
 };
 

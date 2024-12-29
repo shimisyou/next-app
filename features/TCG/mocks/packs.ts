@@ -1,7 +1,11 @@
 import { Pack } from '../types';
 
 // ベースURLをパブリック環境変数から取得
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '/next-app';
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  (window.location.pathname.includes('/storybook')
+    ? '/next-app/storybook'
+    : '/next-app/next');
 
 // ランダムなレアリティを生成
 const generateRandomRarity = ():

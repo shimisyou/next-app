@@ -3,5 +3,6 @@ module.exports = {
   images: {
     domains: ['localhost', 'yourdomain.com'], // 必要なドメインを追加
   },
+  distDir: 'out',
   // ...existing code...
 };

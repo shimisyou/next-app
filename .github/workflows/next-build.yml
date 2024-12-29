@@ -38,6 +38,8 @@ jobs:
 
       # 5. Next.js のビルド
       - name: Build Next.js
+        env:
+          NEXT_PUBLIC_BASE_URL: 'https://shimisyou.github.io/next-app/next'
         run: npm run build
 
       # 6. GitHub Pages にデプロイ

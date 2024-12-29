@@ -9,17 +9,20 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
       return {
         padding: '16px',
         borderColor: 'gold',
-        backgroundColor: 'rgba(255,215,0,0.2)', // ゴールド系の背景
-        boxShadow: '0 0 20px 10px rgba(255,223,0,0.8)', // ゴールドの輝き
+        background:
+          'linear-gradient(45deg, #ffd700 0%, #ffcc00 50%, #ffb700 100%)', // ゴールド系のグラデーション
+        boxShadow: '0 0 20px 10px rgba(255,223,0,1)', // 常に金色のシャドウ
         animation: 'glow 2s infinite alternate',
-        nameBackgroundColor: 'rgba(255,223,0,0.9)', // 明るいゴールド
+        nameBackgroundColor:
+          'linear-gradient(45deg, #ffd700 0%, #ffcc00 50%, #ffb700 100%)', // ゴールド系のグラデーション
         nameTextColor: 'black',
-        rarityBackgroundColor: 'rgba(255,223,0,1)', // 濃いゴールド
+        rarityBackgroundColor:
+          'linear-gradient(45deg, #ffd700 0%, #ffcc00 50%, #ffb700 100%)', // ゴールド系のグラデーション
         rarityTextColor: 'black',
         keyframes: `
           @keyframes glow {
-            0% { box-shadow: 0 0 15px 5px rgba(255,223,0,0.8); }
-            100% { box-shadow: 0 0 25px 10px rgba(255,223,0,1); }
+            0% { box-shadow: 0 0 30px 15px rgba(255,223,0,0.8); }
+            100% { box-shadow: 0 0 40px 20px rgba(255,223,0,1); }
           }
         `,
         reflection: `
@@ -52,10 +55,10 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
       return {
         padding: '16px',
         borderColor: 'steelblue',
-        backgroundColor: 'rgba(173,216,230,0.2)', // 明るいブルー
+        backgroundColor: '#b0e0e6', // 明るいブルー
         boxShadow: '0 0 8px 2px rgba(70,130,180,0.5)', // 柔らかいブルー
         animation: 'subtlePulse 4s infinite alternate',
-        nameBackgroundColor: 'rgba(100,149,237,0.9)', // 鮮やかなブルー
+        nameBackgroundColor: 'rgba(70,130,180,1)', // 濃いブルー
         nameTextColor: 'white',
         rarityBackgroundColor: 'rgba(70,130,180,1)', // 濃いブルー
         rarityTextColor: 'white',
@@ -95,19 +98,12 @@ const getRarityStyles = (rarity: CardType['rarity']) => {
       return {
         padding: '16px',
         borderColor: 'silver',
-        backgroundColor: 'rgba(192,192,192,0.2)', // シルバー系の背景
+        backgroundColor: '#dcdcdc', // シルバー系の背景
         boxShadow: '0 0 15px 5px rgba(192,192,192,0.8)', // シルバーの輝き
-        animation: 'softGlow 3s infinite alternate',
-        nameBackgroundColor: 'rgba(224,224,224,0.9)', // 明るいシルバー
+        nameBackgroundColor: 'rgba(192,192,192,1)', // 濃いシルバー
         nameTextColor: 'black',
         rarityBackgroundColor: 'rgba(192,192,192,1)', // 濃いシルバー
         rarityTextColor: 'black',
-        keyframes: `
-          @keyframes softGlow {
-            0% { box-shadow: 0 0 10px 3px rgba(192,192,192,0.6); }
-            100% { box-shadow: 0 0 15px 5px rgba(192,192,192,0.8); }
-          }
-        `,
       };
     default:
       return {
@@ -146,9 +142,8 @@ export const TCGCard = ({ card, onClick }: TCGCardProps) => {
           borderRadius: 4,
           padding: rarityStyles.padding,
           border: `4px solid ${rarityStyles.borderColor}`,
-          backgroundColor: rarityStyles.backgroundColor,
-          boxShadow: rarityStyles.boxShadow,
-          animation: rarityStyles.animation,
+          background: rarityStyles.background,
+          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff', // ニューモフィズムの影
           transition: 'transform 0.2s', // ホバー時のアニメーションを追加
           '&:hover': {
             transform: 'scale(1.05)', // ホバー時に拡大

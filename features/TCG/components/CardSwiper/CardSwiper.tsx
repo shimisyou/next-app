@@ -5,6 +5,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Typography,
 } from '@mui/material';
 import { useState } from 'react';
 import { EffectCards, Navigation } from 'swiper/modules';
@@ -35,18 +36,30 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        p: 4,
+        p: { xs: 2, md: 4 },
+        width: '100%',
       }}
     >
       <Card
         sx={{
           width: '100%',
           maxWidth: '600px',
-          boxShadow: 3,
-          borderRadius: 4,
+          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
+          borderRadius: '16px',
+          background: '#f0f0f0',
+          m: 2,
         }}
       >
-        <CardHeader title="カードをめくろう" />
+        <CardHeader
+          title={
+            <Typography variant="h5" component="h2">
+              <Box sx={{ textAlign: 'center', color: '#333' }}>
+                {' '}
+                カードをめくろう
+              </Box>
+            </Typography>
+          }
+        />
         <CardContent
           sx={{
             display: 'flex',
@@ -108,6 +121,16 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
               className="swiper-button-next"
               variant="contained"
               aria-label="めくる"
+              sx={{
+                background: '#f0f0f0',
+                boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
+                color: '#333',
+                borderRadius: '50px', // 楕円形にするためのスタイル
+                padding: '10px 20px', // ボタンのパディングを調整
+                '&:hover': {
+                  background: '#e0e0e0',
+                },
+              }}
             >
               めくる
             </Button>
@@ -117,6 +140,16 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
               variant="contained"
               onClick={handleReset}
               aria-label="終了"
+              sx={{
+                background: '#f0f0f0',
+                boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
+                color: '#333',
+                borderRadius: '50px', // 楕円形にするためのスタイル
+                padding: '10px 20px', // ボタンのパディングを調整
+                '&:hover': {
+                  background: '#e0e0e0',
+                },
+              }}
             >
               終了
             </Button>

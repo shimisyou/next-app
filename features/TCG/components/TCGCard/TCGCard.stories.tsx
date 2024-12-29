@@ -42,7 +42,6 @@ export const Common: Story = {
 
 /**
 - 通常レアリティのカード
-- 銀色の影が伸び縮みするアニメーション付き
 **/
 export const Rare: Story = {
   args: {
@@ -57,7 +56,6 @@ export const Rare: Story = {
 /**
 - 中間レアリティのカード
 - 反射するキラエフェクト付き
-- 青色の影が伸び縮みするアニメーション付き
 **/
 export const SuperRare: Story = {
   args: {
@@ -72,8 +70,8 @@ export const SuperRare: Story = {
 
 /**
 - 最高レアリティのカード
+- 余白も金色
 - 反射するキラエフェクト付き
-- 金色の影が伸び縮みするアニメーション付き
 **/
 export const UltraRare: Story = {
   args: {

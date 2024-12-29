@@ -14,18 +14,19 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
   <Box
     sx={{
       position: 'relative',
-      width: '200px',
-      height: '380px', // カードの高さ + 影画像分
+      width: { xs: '150px', md: '200px' },
+      height: { xs: '280px', md: '380px' },
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      margin: '0 auto', // 中央に配置
     }}
   >
     {/* メインカード */}
     <Card
       sx={{
         width: '100%',
-        height: '300px',
+        height: { xs: '220px', md: '300px' },
         overflow: 'hidden',
         zIndex: 2,
         borderRadius: '12px',
@@ -42,7 +43,7 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
         <Image
           src={url}
           alt={alt}
-          sizes="200px" // 固定サイズを指定
+          sizes="(max-width: 600px) 150px, 200px"
           style={{
             objectFit: 'fill',
           }}
@@ -54,9 +55,9 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
     <Box
       sx={{
         position: 'absolute',
-        top: '320px',
-        width: '200px',
-        height: '60px',
+        top: { xs: '240px', md: '320px' },
+        width: { xs: '150px', md: '200px' },
+        height: { xs: '40px', md: '60px' },
         overflow: 'hidden',
         transform: 'scaleY(-1)',
         opacity: 0.3,
@@ -66,7 +67,7 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
       <Image
         src={url}
         alt={`${alt} Reflection`}
-        sizes="200px" // 固定サイズを指定
+        sizes="(max-width: 600px) 150px, 200px"
         style={{
           objectFit: 'cover',
         }}
@@ -78,25 +79,33 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
 
 export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
   return (
-    <Swiper
-      effect={'flip'}
-      grabCursor
-      modules={[EffectFlip]}
-      flipEffect={{
-        slideShadows: false,
+    <Box
+      sx={{
+        width: { xs: '150px', md: '200px' },
+        height: { xs: '280px', md: '360px' },
+        margin: '0 auto', // 中央に配置
       }}
-      style={{
-        width: '200px',
-        height: '360px',
-        overflow: 'hidden',
-      }}
-      loop
     >
-      {[packImg.front, packImg.back].map((side, index) => (
-        <SwiperSlide key={index}>
-          <CardWithReflection url={side.url} alt={side.alt} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+      <Swiper
+        effect={'flip'}
+        grabCursor
+        modules={[EffectFlip]}
+        flipEffect={{
+          slideShadows: false,
+        }}
+        style={{
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+        }}
+        loop
+      >
+        {[packImg.front, packImg.back].map((side, index) => (
+          <SwiperSlide key={index}>
+            <CardWithReflection url={side.url} alt={side.alt} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Box>
   );
 };

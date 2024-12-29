@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -26,11 +26,44 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Box sx={{ bgcolor: 'gray', minHeight: '100vh' }}>
-          <Box bgcolor="black" padding={3} mb={3}>
-            Header
+        <Box
+          sx={{
+            bgcolor: '#e0e0e0',
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            p: { xs: 2, md: 4 },
+            boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+          }}
+        >
+          <Box
+            sx={{
+              bgcolor: '#f0f0f0',
+              borderRadius: '16px',
+              boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
+              width: '100%',
+              maxWidth: '1200px',
+              p: { xs: 2, md: 3 },
+              mb: 3,
+            }}
+          >
+            <Typography variant="h6" sx={{ color: '#333' }}>
+              Header
+            </Typography>
           </Box>
-          <Container maxWidth="lg">{children}</Container>
+          <Container
+            maxWidth="lg"
+            sx={{
+              bgcolor: '#f0f0f0',
+              borderRadius: '16px',
+              boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
+              p: { xs: 2, md: 3 },
+              flex: 1,
+            }}
+          >
+            {children}
+          </Container>
         </Box>
       </body>
     </html>

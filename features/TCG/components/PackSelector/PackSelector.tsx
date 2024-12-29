@@ -23,8 +23,26 @@ export const PackSelector = ({
   onOpenPack,
 }: PackSelectorProps) => {
   return (
-    <>
-      <Card>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+        width: '100%',
+      }}
+    >
+      <Card
+        sx={{
+          width: '100%',
+          maxWidth: '600px',
+          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
+          borderRadius: '16px',
+          background: '#f0f0f0',
+          m: 2,
+        }}
+      >
         <CardHeader
           title={
             <Typography variant="h6" color="textSecondary" textAlign={'center'}>
@@ -40,21 +58,32 @@ export const PackSelector = ({
             onSlideChange={(swiper) => onSlideChange(packs[swiper.realIndex])}
           />
         </CardContent>
-        <CardActions>
-          <Box
+        <CardActions
+          sx={{
+            justifyContent: 'center',
+            minHeight: '64px',
+            marginBottom: '8px',
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={onOpenPack}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-              m: 4,
+              background: '#f0f0f0',
+              boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
+              color: '#333',
+              borderRadius: '50px',
+              padding: '10px 20px',
+              '&:hover': {
+                background: '#e0e0e0',
+              },
             }}
           >
-            <Button variant="contained" color="primary" onClick={onOpenPack}>
-              開封する
-            </Button>
-          </Box>
+            開封する
+          </Button>
         </CardActions>
       </Card>
-    </>
+    </Box>
   );
 };

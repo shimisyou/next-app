@@ -1,6 +1,6 @@
+import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
 import {
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -52,11 +52,16 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
       >
         <CardHeader
           title={
-            <Typography variant="h5" component="h2">
-              <Box sx={{ textAlign: 'center', color: '#333' }}>
-                {' '}
-                カードをめくろう
-              </Box>
+            <Typography
+              variant="h4"
+              sx={{
+                color: '#333',
+                fontWeight: 'bold',
+                textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
+              }}
+              textAlign={'center'}
+            >
+              カードをめくろう!
             </Typography>
           }
         />
@@ -116,43 +121,17 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
           }}
         >
           {!isEnd ? (
-            <Button
+            <NeumorphicButton
               key="next"
-              className="swiper-button-next"
-              variant="contained"
               aria-label="めくる"
-              sx={{
-                background: '#f0f0f0',
-                boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
-                color: '#333',
-                borderRadius: '50px', // 楕円形にするためのスタイル
-                padding: '10px 20px', // ボタンのパディングを調整
-                '&:hover': {
-                  background: '#e0e0e0',
-                },
-              }}
+              className="swiper-button-next"
             >
               めくる
-            </Button>
+            </NeumorphicButton>
           ) : (
-            <Button
-              key="end"
-              variant="contained"
-              onClick={handleReset}
-              aria-label="終了"
-              sx={{
-                background: '#f0f0f0',
-                boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
-                color: '#333',
-                borderRadius: '50px', // 楕円形にするためのスタイル
-                padding: '10px 20px', // ボタンのパディングを調整
-                '&:hover': {
-                  background: '#e0e0e0',
-                },
-              }}
-            >
+            <NeumorphicButton key="end" onClick={handleReset}>
               終了
-            </Button>
+            </NeumorphicButton>
           )}
         </CardActions>
       </Card>

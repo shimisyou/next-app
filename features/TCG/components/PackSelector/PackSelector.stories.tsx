@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import { mockPacks } from '../../mocks/packs';
-import { PackSelector } from './PackSelector';
+import PackSelector from './PackSelector';
 
 const meta: Meta<typeof PackSelector> = {
   title: 'features/TCG/PackSelector/PackSelector',

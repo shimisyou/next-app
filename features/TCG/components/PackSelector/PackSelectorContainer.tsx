@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Pack } from '../../types';
 import { CardSwiperContainer } from '../CardSwiper/CardSwiperContainer';
-import { PackSelector } from './PackSelector';
+import PackSelector from './PackSelector';
 
 type PackSelectorContainerProps = {
   packs: Pack[] | [];

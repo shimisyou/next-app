@@ -1,7 +1,7 @@
+import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
 import { CoverFlowSwiper } from '@/components/elements/CoverFlowSwiper/CoverFlowSwiper';
 import {
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -17,7 +17,7 @@ type PackSelectorProps = {
   onOpenPack: () => void;
 };
 
-export const PackSelector = ({
+const PackSelector = ({
   packs,
   onSlideChange,
   onOpenPack,
@@ -45,7 +45,15 @@ export const PackSelector = ({
       >
         <CardHeader
           title={
-            <Typography variant="h6" color="textSecondary" textAlign={'center'}>
+            <Typography
+              variant="h4"
+              sx={{
+                color: '#333',
+                fontWeight: 'bold',
+                textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
+              }}
+              textAlign={'center'}
+            >
               パックを選ぼう!
             </Typography>
           }
@@ -65,25 +73,11 @@ export const PackSelector = ({
             marginBottom: '8px',
           }}
         >
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={onOpenPack}
-            sx={{
-              background: '#f0f0f0',
-              boxShadow: '5px 5px 15px #d1d1d1, -5px -5px 15px #ffffff',
-              color: '#333',
-              borderRadius: '50px',
-              padding: '10px 20px',
-              '&:hover': {
-                background: '#e0e0e0',
-              },
-            }}
-          >
-            開封する
-          </Button>
+          <NeumorphicButton onClick={onOpenPack}>開封する</NeumorphicButton>
         </CardActions>
       </Card>
     </Box>
   );
 };
+
+export default PackSelector;

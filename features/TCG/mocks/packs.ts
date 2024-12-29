@@ -28,7 +28,7 @@ export const generateCards = (packId: number, cardCount: number) => {
       img: `${BASE_URL}/cards/series1/${String(randomImageNumber).padStart(
         2,
         '0'
-      )}.png`, // ランダムな画像番号
+      )}.png`,
     };
   });
 };

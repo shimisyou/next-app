@@ -30,21 +30,27 @@ export const Header = () => {
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Link href="/" passHref>
-          <NeumorphicIconButton>
-            <HomeIcon sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
-          </NeumorphicIconButton>
+        <Link href="/">
+          <a>
+            <NeumorphicIconButton>
+              <HomeIcon sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
+            </NeumorphicIconButton>
+          </a>
         </Link>
-        <Link href="/tcg" passHref>
-          <NeumorphicIconButton>
-            <Style sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
-          </NeumorphicIconButton>
+        <Link href="/tcg">
+          <a>
+            <NeumorphicIconButton>
+              <Style sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
+            </NeumorphicIconButton>
+          </a>
         </Link>
       </Box>
-      <Link href="https://github.com/shimisyou/next-app" passHref>
-        <NeumorphicIconButton>
-          <GitHubIcon sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
-        </NeumorphicIconButton>
+      <Link href="https://github.com/shimisyou/next-app">
+        <a>
+          <NeumorphicIconButton>
+            <GitHubIcon sx={{ color: '#333', fontSize: { xs: 32, md: 40 } }} />
+          </NeumorphicIconButton>
+        </a>
       </Link>
     </Box>
   );

@@ -40,11 +40,7 @@ jobs:
       - name: Build Next.js
         run: npm run build
 
-      # 6. Next.js のエクスポート
-      # - name: Export Next.js
-      #   run: npm run export
-
-      # 7. GitHub Pages にデプロイ
+      # 6. GitHub Pages にデプロイ
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3

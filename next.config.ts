@@ -1,10 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // ...existing code...
   images: {
-    domains: ['placehold.jp'], // 使用するホスト名を追加
+    domains: ['localhost', 'yourdomain.com'], // 必要なドメインを追加
   },
+  distDir: '.next',
+  // ...existing code...
 };
 
 export default nextConfig;

@@ -15,11 +15,11 @@ export const ReversiblePackComponent: Story = {
   args: {
     packImg: {
       front: {
-        url: 'https://placehold.jp/b8e26a/ffffff/200x300.png?text=%E3%83%91%E3%83%83%E3%82%AF%EF%BC%88%E8%A1%A8%EF%BC%89',
+        url: './cards/series1/09.png',
         alt: '表',
       },
       back: {
-        url: 'https://placehold.jp/b7c3a2/ffffff/200x300.png?text=%E3%83%91%E3%83%83%E3%82%AF%EF%BC%88%E8%A3%8F%EF%BC%89',
+        url: './pack1.png',
         alt: '裏',
       },
     },

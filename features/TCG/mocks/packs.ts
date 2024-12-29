@@ -41,11 +41,11 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `${BASE_URL}/pack1.png`,
+        url: `${BASE_URL}/cards/series1/09.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `${BASE_URL}/pack2.png`,
+        url: `${BASE_URL}/pack1.png`,
         alt: `Back of Pack ${packId}`,
       },
     },

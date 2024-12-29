@@ -69,3 +69,8 @@ npm run storybook
 
 - **Next.js Build CI**: プッシュまたはプルリクエスト時に Next.js アプリケーションをビルドします。
 - **Storybook CI**: プッシュまたはプルリクエスト時に Storybook をビルドし、テストを実行します。
+
+## 🌐 GitHub Pages
+
+- [Next.js アプリケーション](https://shimisyou.github.io/next-app/next/)
+- [Storybook](https://shimisyou.github.io/next-app/storybook/)

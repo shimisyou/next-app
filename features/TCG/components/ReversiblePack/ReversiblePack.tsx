@@ -10,7 +10,15 @@ type ReversiblePackProps = {
   packImg: ReversibleImage;
 };
 
-const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
+const CardWithReflection = ({
+  url,
+  alt,
+  showText,
+}: {
+  url: string;
+  alt: string;
+  showText: boolean;
+}) => (
   <Box
     sx={{
       position: 'relative',
@@ -49,6 +57,23 @@ const CardWithReflection = ({ url, alt }: { url: string; alt: string }) => (
           }}
           fill
         />
+        {/* "Card Game" テキスト */}
+        {showText && (
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: '40px', // テキストの位置をさらに上に調整
+              width: '100%',
+              textAlign: 'center',
+              color: 'white',
+              fontSize: { xs: '14px', md: '18px' }, // フォントサイズを調整
+              fontWeight: 'bold',
+              textShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
+            }}
+          >
+            Card Game
+          </Box>
+        )}
       </CardContent>
     </Card>
     {/* 反転影画像 */}
@@ -102,7 +127,11 @@ export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
       >
         {[packImg.front, packImg.back].map((side, index) => (
           <SwiperSlide key={index}>
-            <CardWithReflection url={side.url} alt={side.alt} />
+            <CardWithReflection
+              url={side.url}
+              alt={side.alt}
+              showText={index === 0}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

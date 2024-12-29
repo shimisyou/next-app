@@ -21,14 +21,7 @@ export const WithInteraction: Story = {
   args: {
     cards: generateCards(1, 5),
   },
-  play: async ({ canvasElement, args, step }) => {
-    const canvas = within(canvasElement);
-
-    await step('モーダルを開く', async () => {
-      const openButton = canvas.getByRole('button', { name: /開封する/i });
-      await userEvent.click(openButton);
-    });
-
+  play: async ({  args, step }) => {
     await step('ナビゲーションボタンでスライドを進める', async () => {
       const modal = screen.getByRole('dialog');
       const nextButton = within(modal).getByRole('button', { name: /めくる/i });

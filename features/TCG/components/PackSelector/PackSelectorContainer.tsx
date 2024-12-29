@@ -3,7 +3,7 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Pack } from '../../types';
-import { CardSwiper } from '../CardSwiper/CardSwiper';
+import { CardSwiperContainer } from '../CardSwiper/CardSwiperContainer';
 import { PackSelector } from './PackSelector';
 
 type PackSelectorContainerProps = {
@@ -32,7 +32,6 @@ export const PackSelectorContainer = ({
   const handleOpenPack = () => {
     if (selectedPack) {
       setIsPackOpened(true);
-      console.log('Opened pack:', selectedPack);
     }
   };
 
@@ -57,7 +56,10 @@ export const PackSelectorContainer = ({
         </>
       ) : (
         selectedPack && (
-          <CardSwiper cards={selectedPack.cards} onClose={handleOnClose} />
+          <CardSwiperContainer
+            cards={selectedPack.cards}
+            onComplete={handleOnClose}
+          />
         )
       )}
     </Box>

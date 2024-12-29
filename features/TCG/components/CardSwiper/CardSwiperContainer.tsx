@@ -1,4 +1,4 @@
-import { Box, Button, Modal } from '@mui/material';
+import { Box, Modal } from '@mui/material';
 import { useState } from 'react';
 import { Card as CardType } from '../../types';
 import { CardSwiper } from './CardSwiper';
@@ -12,12 +12,7 @@ export const CardSwiperContainer = ({
   cards,
   onComplete,
 }: CardSwiperContainerProps) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const [open, setOpen] = useState(true);
 
   const handleComplete = () => {
     setOpen(false);
@@ -36,12 +31,8 @@ export const CardSwiperContainer = ({
         width: '100%',
       }}
     >
-      <Button variant="contained" onClick={handleOpen}>
-        開封する
-      </Button>
       <Modal
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         aria-modal="true"

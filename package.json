@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "prepare": "husky"
+    "prepare": "husky",
+    "pre-commit": "lint-staged && npm run test-storybook"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "next lint --file"

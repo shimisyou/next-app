@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, screen, userEvent, within } from '@storybook/test';
 import PackSelectorContainer from './PackSelectorContainer';
 
 import { mockPacks } from '../../mocks/packs';
@@ -31,11 +31,6 @@ export const WithInteraction: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('パックを選択', async () => {
-      const packImages = await canvas.getAllByAltText(/Front of Pack/i);
-      await userEvent.click(packImages[0]); // 最初のパックを選択
-    });
-
     await step('パックを開く', async () => {
       const openButton = await canvas.getByRole('button', {
         name: /開封する/i,
@@ -43,11 +38,28 @@ export const WithInteraction: Story = {
       await userEvent.click(openButton);
     });
 
-    await step('カードの内容を確認', async () => {
+    await step('ナビゲーションボタンでスライドを進める', async () => {
+      const modal = await screen.findByRole('dialog');
+      const nextButton = within(modal).getByRole('button', {
+        name: /めくる/i,
+      });
       for (const card of mockPacks[0].cards) {
-        const cardName = await canvas.findByText(card.name);
+        const cardName = await screen.findByText(card.name);
         expect(cardName).toBeInTheDocument();
+        await userEvent.click(nextButton);
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Optional delay for better simulation
       }
+
+      const endButton = within(modal).getByRole('button', {
+        name: /終了/i,
+      });
+      expect(endButton).toBeInTheDocument();
+    });
+
+    await step('終了ボタンでモーダルが閉じること', async () => {
+      const endButton = screen.getByRole('button', { name: /終了/i });
+      await userEvent.click(endButton);
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
   },
 };

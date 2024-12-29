@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
     domains: ['localhost', 'yourdomain.com'], // 必要なドメインを追加
   },
   output: 'export', // 静的エクスポートを有効にする
-  basePath: '/next-app/docs/next', // 正しいベースパス
-  assetPrefix: '/next-app/docs/next', // 静的ファイルが正しく読み込まれるように的ファイルのパスを正しく解決するために追加
+  basePath: '/next-app/next', // 公開URLに合わせる
+  assetPrefix: '/next-app/next', // 静的ファイルの基準パスも一致させる
   // ...existing code...
 };
 

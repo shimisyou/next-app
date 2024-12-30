@@ -52,17 +52,16 @@ export const CoverFlowSwiper = ({
       {isReady && (
         <Swiper
           effect={'coverflow'}
-          spaceBetween={30}
           grabCursor
           loop
           centeredSlides
-          slidesPerView={2}
+          slidesPerView={1.5}
           breakpoints={{
             640: {
-              slidesPerView: 2.5,
+              slidesPerView: 2,
             },
             1024: {
-              slidesPerView: 2.5,
+              slidesPerView: 3,
             },
           }}
           modules={[EffectCoverflow]}
@@ -82,7 +81,8 @@ export const CoverFlowSwiper = ({
             <SwiperSlide key={index}>
               <Box
                 sx={{
-                  display: 'inline-block',
+                  py: 4,
+                  px: 2,
                 }}
               >
                 {slideContent}

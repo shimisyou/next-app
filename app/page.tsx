@@ -21,14 +21,14 @@ export default function Home() {
         }}
       >
         <Typography
-          variant="h4"
+          variant="h6"
           sx={{
             color: '#333',
             fontWeight: 'bold',
             textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
           }}
         >
-          このページは作成予定。
+          このページは作成中
         </Typography>
       </Box>
     </Box>

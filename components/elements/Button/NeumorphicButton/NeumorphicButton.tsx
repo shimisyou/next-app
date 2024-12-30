@@ -7,8 +7,6 @@ interface NeumorphicButtonProps extends ButtonProps {
 const NeumorphicButton = ({ children, ...props }: NeumorphicButtonProps) => {
   return (
     <Button
-      variant="contained"
-      color="primary"
       sx={{
         bgcolor: '#e0e0e0', // NeumorphicIconButtonと同じ背景色
         boxShadow: '5px 5px 15px #bebebe, -5px -5px 15px #ffffff', // NeumorphicIconButtonと同じ影
@@ -22,7 +20,7 @@ const NeumorphicButton = ({ children, ...props }: NeumorphicButtonProps) => {
       {...props}
     >
       <Typography
-        variant="h6"
+        variant="body1"
         sx={{
           fontWeight: 'bold',
           textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',

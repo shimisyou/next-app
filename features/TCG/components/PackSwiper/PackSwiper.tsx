@@ -25,15 +25,13 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        p: 2,
         width: '100%',
       }}
     >
       <Card
         sx={{
           width: '100%',
-          maxWidth: '600px',
-          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
+          boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff', // ニューモーフィズムスタイル
           borderRadius: '16px',
           background: '#f0f0f0',
           m: 2,
@@ -54,7 +52,7 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
             </Typography>
           }
         />
-        <CardContent>
+        <CardContent sx={{ padding: '0' }}>
           <CoverFlowSwiper
             content={packs.map((pack) => {
               return <ReversiblePack key={pack.id} packImg={pack.img} />;
@@ -69,7 +67,7 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
             marginBottom: '8px',
           }}
         >
-          <NeumorphicButton onClick={onOpenPack}>開封する</NeumorphicButton>
+          <NeumorphicButton onClick={onOpenPack}>開封</NeumorphicButton>
         </CardActions>
       </Card>
     </Box>

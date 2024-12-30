@@ -27,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
         <Box
           sx={{
             bgcolor: '#e0e0e0',
@@ -35,12 +34,13 @@ export default function RootLayout({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            pt: { xs: 14, md: 16 }, // ヘッダーとの余白をさらに追加
-            px: { xs: 2, md: 4 },
+            pt: { xs: 14, md: 16 },
+            px: { xs: 2, md: 3 },
             boxShadow: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
             overflow: 'hidden', // スクロールバーを隠す
           }}
         >
+          <Header />
           <Container
             maxWidth="lg"
             sx={{
@@ -61,8 +61,8 @@ export default function RootLayout({
                 left: 0,
                 right: 0,
                 bottom: 0,
-                overflowY: 'auto', // 縦スクロールを有効にする
                 p: { xs: 2, md: 3 },
+                overflow: 'auto', // スクロールバーを表示
               }}
             >
               {children}

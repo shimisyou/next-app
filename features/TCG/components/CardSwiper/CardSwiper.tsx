@@ -53,7 +53,7 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
         <CardHeader
           title={
             <Typography
-              variant="h4"
+              variant="h6"
               sx={{
                 color: '#333',
                 fontWeight: 'bold',

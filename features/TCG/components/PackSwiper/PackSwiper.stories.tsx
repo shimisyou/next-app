@@ -23,7 +23,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
 
     // ボタンを取得
-    const openButton = await canvas.findByRole('button', { name: /開封する/i });
+    const openButton = await canvas.findByRole('button', { name: /開封/i });
 
     // ボタンをクリック
     await userEvent.click(openButton);

@@ -33,7 +33,7 @@ export const WithInteraction: Story = {
 
     await step('パックを開く', async () => {
       const openButton = await canvas.getByRole('button', {
-        name: /開封する/i,
+        name: /開封/i,
       });
       await userEvent.click(openButton);
     });

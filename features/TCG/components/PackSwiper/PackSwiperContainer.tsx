@@ -4,17 +4,17 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Pack } from '../../types';
 import { CardSwiperContainer } from '../CardSwiper/CardSwiperContainer';
-import PackSelector from './PackSelector';
+import PackSwiper from './PackSwiper';
 
-type PackSelectorContainerProps = {
+type PackSwiperContainerProps = {
   packs: Pack[] | [];
   fallback: React.ReactNode;
 };
 
-export const PackSelectorContainer = ({
+export const PackSwiperContainer = ({
   packs,
   fallback,
-}: PackSelectorContainerProps) => {
+}: PackSwiperContainerProps) => {
   const [selectedPack, setSelectedPack] = useState<Pack | null>(null);
   const [isPackOpened, setIsPackOpened] = useState(false);
 
@@ -48,7 +48,7 @@ export const PackSelectorContainer = ({
     <Box>
       {!isPackOpened ? (
         <>
-          <PackSelector
+          <PackSwiper
             packs={packs}
             onSlideChange={handleSlideChange}
             onOpenPack={handleOpenPack}
@@ -66,4 +66,4 @@ export const PackSelectorContainer = ({
   );
 };
 
-export default PackSelectorContainer;
+export default PackSwiperContainer;

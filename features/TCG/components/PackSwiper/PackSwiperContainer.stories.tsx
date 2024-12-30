@@ -1,16 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { expect, screen, userEvent, within } from '@storybook/test';
-import PackSelectorContainer from './PackSelectorContainer';
+import PackSwiperContainer from './PackSwiperContainer';
 
 import { mockPacks } from '../../mocks/packs';
 
 const meta = {
-  title: 'features/TCG/PackSelector/PackSelectorContainer',
-  component: PackSelectorContainer,
+  title: 'features/TCG/PackSwiper/PackSwiperContainer',
+  component: PackSwiperContainer,
   args: {
     packs: mockPacks,
   },
-} satisfies Meta<typeof PackSelectorContainer>;
+} satisfies Meta<typeof PackSwiperContainer>;
 
 export default meta;
 

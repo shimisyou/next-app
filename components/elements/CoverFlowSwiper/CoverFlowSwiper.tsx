@@ -30,7 +30,6 @@ export const CoverFlowSwiper = ({
         width: '100%',
         overflow: 'hidden',
         position: 'relative',
-        minHeight: '400px', // 領域を確保
       }}
     >
       {!isReady && (
@@ -83,8 +82,7 @@ export const CoverFlowSwiper = ({
             <SwiperSlide key={index}>
               <Box
                 sx={{
-                  py: 4,
-                  px: 2,
+                  display: 'inline-block',
                 }}
               >
                 {slideContent}

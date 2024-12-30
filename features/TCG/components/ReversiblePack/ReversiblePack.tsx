@@ -107,7 +107,7 @@ export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
     <Box
       sx={{
         width: { xs: '150px', md: '200px' },
-        height: { xs: '280px', md: '360px' },
+        height: { xs: '280px', md: '380px' },
         margin: '0 auto', // 中央に配置
       }}
     >

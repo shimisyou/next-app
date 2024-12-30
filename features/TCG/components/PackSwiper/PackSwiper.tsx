@@ -11,17 +11,13 @@ import {
 import { Pack } from '../../types';
 import { ReversiblePack } from '../ReversiblePack/ReversiblePack';
 
-type PackSelectorProps = {
+type PackSwiperProps = {
   packs: Pack[];
   onSlideChange: (selectedPack: Pack) => void;
   onOpenPack: () => void;
 };
 
-const PackSelector = ({
-  packs,
-  onSlideChange,
-  onOpenPack,
-}: PackSelectorProps) => {
+const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
   return (
     <Box
       sx={{
@@ -46,7 +42,7 @@ const PackSelector = ({
         <CardHeader
           title={
             <Typography
-              variant="h4"
+              variant="h6"
               sx={{
                 color: '#333',
                 fontWeight: 'bold',
@@ -80,4 +76,4 @@ const PackSelector = ({
   );
 };
 
-export default PackSelector;
+export default PackSwiper;

@@ -1,4 +1,4 @@
-import { PackSelectorContainer } from '@/features/TCG/components/PackSelector/PackSelectorContainer';
+import { PackSwiperContainer } from '@/features/TCG/components/PackSwiper/PackSwiperContainer';
 import { mockPacks } from '@/features/TCG/mocks/packs';
 
 const fetchPacks = async () => {
@@ -9,10 +9,7 @@ const TCGTopPage = async () => {
   const packs = await fetchPacks();
 
   return (
-    <PackSelectorContainer
-      packs={packs}
-      fallback={<div>Loading packs...</div>}
-    />
+    <PackSwiperContainer packs={packs} fallback={<div>Loading packs...</div>} />
   );
 };
 

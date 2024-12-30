@@ -70,7 +70,6 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            paddingTop: '24px',
           }}
         >
           <Swiper

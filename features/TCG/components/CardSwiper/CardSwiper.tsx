@@ -43,11 +43,11 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
       <Card
         sx={{
           width: '100%',
-          maxWidth: '600px',
-          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
-          borderRadius: '16px',
-          background: '#f0f0f0',
-          m: 2,
+          bgcolor: '#f5f5f5', // 柔らかな背景色
+          borderRadius: '12px',
+          boxShadow: '4px 4px 8px #e0e0e0, -4px -4px 8px #ffffff', // 控えめな影
+          margin: '16px 0',
+          overflow: 'hidden',
         }}
       >
         <CardHeader

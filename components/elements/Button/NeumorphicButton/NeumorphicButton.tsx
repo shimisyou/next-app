@@ -8,13 +8,13 @@ const NeumorphicButton = ({ children, ...props }: NeumorphicButtonProps) => {
   return (
     <Button
       sx={{
-        bgcolor: '#e0e0e0', // NeumorphicIconButtonと同じ背景色
-        boxShadow: '5px 5px 15px #bebebe, -5px -5px 15px #ffffff', // NeumorphicIconButtonと同じ影
+        bgcolor: '#f5f5f5',
+        borderRadius: '16px',
+        boxShadow: '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff', // 控えめなニューモーフィズム
         color: '#333',
-        borderRadius: '50px',
         padding: '10px 20px',
         '&:hover': {
-          bgcolor: '#d0d0d0', // NeumorphicIconButtonと同じホバー時の背景色
+          bgcolor: '#eaeaea', // NeumorphicIconButtonと同じホバー時の背景色
         },
       }}
       {...props}

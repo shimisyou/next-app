@@ -11,14 +11,15 @@ const NeumorphicIconButton = ({
   return (
     <IconButton
       sx={{
-        bgcolor: '#e0e0e0',
+        bgcolor: '#f5f5f5',
         borderRadius: '50%',
-        boxShadow: '5px 5px 15px #bebebe, -5px -5px 15px #ffffff', // ニューモーフィズムスタイル
+        boxShadow: '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff', // 控えめなニューモーフィズム
         '&:hover': {
-          bgcolor: '#d0d0d0',
+          bgcolor: '#eaeaea', // ホバー時の色を調整
         },
-        width: { xs: 48, md: 64 }, // アイコンボタンのサイズを調整
-        height: { xs: 48, md: 64 }, // アイコンボタンのサイズを調整
+        width: { xs: 48, md: 64 },
+        height: { xs: 48, md: 64 },
+        transition: 'all 0.2s ease-in-out', // スムーズなホバーアニメーション
       }}
       {...props}
     >

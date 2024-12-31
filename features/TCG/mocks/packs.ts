@@ -10,8 +10,8 @@ const generateRandomRarity = ():
   | 'super-rare'
   | 'common' => {
   const random = Math.random();
-  if (random <= 0.001) return 'ultra-rare'; // 0.1%
-  if (random <= 0.2) return 'super-rare'; // 20%
+  if (random <= 0.01) return 'ultra-rare'; // 1%
+  if (random <= 0.1) return 'super-rare'; // 10%
   if (random <= 0.5) return 'rare'; // 30%
   return 'common'; // 残りは common
 };

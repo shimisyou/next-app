@@ -64,7 +64,7 @@ const CardListPage = () => {
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 3,
+          gap: 2,
           justifyContent: 'center',
           marginTop: '16px', // 上下にスペースを追加
         }}

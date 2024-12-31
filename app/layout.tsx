@@ -35,7 +35,7 @@ export default function RootLayout({
             flexDirection: 'column',
             alignItems: 'center',
             pt: { xs: 12, md: 16 },
-            px: { xs: 3, md: 4 },
+            px: { xs: 2, md: 3 },
           }}
         >
           <Header />
@@ -45,7 +45,7 @@ export default function RootLayout({
               bgcolor: '#f5f5f5', // `Header`と合わせて統一
               borderRadius: '16px',
               boxShadow: '4px 4px 8px #e0e0e0, -4px -4px 8px #ffffff',
-              padding: { xs: 3, md: 4 },
+              padding: { xs: 2, md: 3 },
               flex: 1,
               mt: 3,
               overflow: 'hidden',

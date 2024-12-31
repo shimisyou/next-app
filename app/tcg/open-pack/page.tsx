@@ -1,10 +1,10 @@
 import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
 import { PackSwiperContainer } from '@/features/TCG/components/PackSwiper/PackSwiperContainer';
-import { generateMockPacks } from '@/features/TCG/mocks/packs';
+import { generateMockPacksWithCacheBuster } from '@/features/TCG/mocks/packs';
 import Link from 'next/link';
 
 const fetchPacks = async () => {
-  return Promise.resolve(generateMockPacks());
+  return Promise.resolve(generateMockPacksWithCacheBuster());
 };
 
 const OpenPackPage = async () => {

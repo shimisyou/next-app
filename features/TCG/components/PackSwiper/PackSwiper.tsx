@@ -1,13 +1,7 @@
 import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
 import { CoverFlowSwiper } from '@/components/elements/CoverFlowSwiper/CoverFlowSwiper';
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Typography,
-} from '@mui/material';
+import { NeumorphicText } from '@/components/elements/Text/NeumorphicText/NeumorphicText';
+import { Box, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { Pack } from '../../types';
 import { ReversiblePack } from '../ReversiblePack/ReversiblePack';
 
@@ -43,23 +37,9 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
         <CardHeader
           title={
             <Box sx={{ textAlign: 'center' }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  display: 'inline-block',
-                  fontWeight: 600, // 少し軽めの太字
-                  p: 1.5, // 適度な余白
-                  px: 4,
-                  bgcolor: '#f5f5f5', // 柔らかな背景色
-                  borderRadius: '16px', // 角丸
-                  textShadow: '0 0 3px rgba(0, 0, 0, 0.1)', // テキストの控えめなシャドウ
-                  boxShadow:
-                    'inset 3px 3px 6px #cccccc, inset -3px -3px 6px #ffffff', // 自然なインセット影
-                  color: '#333',
-                }}
-              >
+              <NeumorphicText isInset variant="h6" sx={{ textAlign: 'center' }}>
                 パックを選ぼう!
-              </Typography>
+              </NeumorphicText>
             </Box>
           }
         />

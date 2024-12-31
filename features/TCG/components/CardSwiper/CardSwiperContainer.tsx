@@ -48,12 +48,7 @@ export const CardSwiperContainer = ({
       >
         <Box
           sx={{
-            bgcolor: '#f5f5f5',
-            borderRadius: '16px',
-            boxShadow: '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff',
-            padding: { xs: 3, md: 5 },
             maxWidth: '600px',
-            width: '90%',
             margin: 'auto',
             outline: 'none',
             position: 'relative',

@@ -1,12 +1,6 @@
 import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Typography,
-} from '@mui/material';
+import { NeumorphicText } from '@/components/elements/Text/NeumorphicText/NeumorphicText';
+import { Box, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import { useState } from 'react';
 import { EffectCards, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -46,23 +40,15 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
           bgcolor: '#f5f5f5', // 柔らかな背景色
           borderRadius: '12px',
           boxShadow: '4px 4px 8px #e0e0e0, -4px -4px 8px #ffffff', // 控えめな影
-          margin: '16px 0',
+          margin: '16px 0', // 縦方向の余白
           overflow: 'hidden',
         }}
       >
         <CardHeader
           title={
-            <Typography
-              variant="h6"
-              sx={{
-                color: '#333',
-                fontWeight: 'bold',
-                textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
-              }}
-              textAlign={'center'}
-            >
-              カードをめくろう!
-            </Typography>
+            <Box sx={{ textAlign: 'center' }}>
+              <NeumorphicText isInset>カードをめくろう!</NeumorphicText>
+            </Box>
           }
         />
         <CardContent

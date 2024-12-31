@@ -53,24 +53,26 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
 });
 
 // 関数版のモックパック生成ロジック
-export const generateMockPacksWithCacheBuster = (): Pack[] => {
-  const cacheBuster = `?cb=${Date.now()}`; // 現在のタイムスタンプを追加
-  return Array.from({ length: 10 }, (_, index) => {
-    const packId = index + 1;
+export const generateMockPacks = (
+  packCount: number = 10,
+  cardCount: number = 5
+): Pack[] => {
+  return Array.from({ length: packCount }, () => {
+    const packId = Math.floor(Math.random() * 10000); // ランダムなパックIDを生成
     return {
       id: packId,
       name: `Pack ${packId}`,
       img: {
         front: {
-          url: `${BASE_URL}/cards/series1/09.png${cacheBuster}`,
+          url: `${BASE_URL}/cards/series1/09.png`,
           alt: `Front of Pack ${packId}`,
         },
         back: {
-          url: `${BASE_URL}/pack1.png${cacheBuster}`,
+          url: `${BASE_URL}/pack1.png`,
           alt: `Back of Pack ${packId}`,
         },
       },
-      cards: generateCards(packId, 5),
+      cards: generateCards(packId, cardCount),
     };
   });
 };

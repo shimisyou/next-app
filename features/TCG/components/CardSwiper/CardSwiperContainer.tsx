@@ -1,5 +1,5 @@
 import { Box, Modal } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Card as CardType } from '../../types';
 import { CardSwiper } from './CardSwiper';
 
@@ -13,6 +13,7 @@ export const CardSwiperContainer = ({
   onComplete,
 }: CardSwiperContainerProps) => {
   const [open, setOpen] = useState(true);
+  const modalRef = useRef<HTMLDivElement | null>(null); // モーダル内要素の参照
 
   const handleComplete = () => {
     setOpen(false);
@@ -20,6 +21,13 @@ export const CardSwiperContainer = ({
       onComplete();
     }
   };
+
+  // モーダルが開いたときにフォーカスを設定
+  useEffect(() => {
+    if (open && modalRef.current) {
+      modalRef.current.focus(); // モーダル内要素にフォーカスを設定
+    }
+  }, [open]);
 
   return (
     <Box
@@ -47,6 +55,8 @@ export const CardSwiperContainer = ({
         role="dialog"
       >
         <Box
+          ref={modalRef} // フォーカスを設定する要素
+          tabIndex={-1} // フォーカス可能にする
           sx={{
             maxWidth: '600px',
             margin: 'auto',

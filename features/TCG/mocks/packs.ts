@@ -33,7 +33,6 @@ export const generateCards = (packId: number, cardCount: number) => {
   });
 };
 
-// パックデータを生成
 export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
   const packId = index + 1;
   return {
@@ -52,3 +51,28 @@ export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
     cards: generateCards(packId, 5), // 5枚固定
   };
 });
+
+// 関数版のモックパック生成ロジック
+export const generateMockPacks = (
+  packCount: number = 10,
+  cardCount: number = 5
+): Pack[] => {
+  return Array.from({ length: packCount }, () => {
+    const packId = Math.floor(Math.random() * 10000); // ランダムなパックIDを生成
+    return {
+      id: packId,
+      name: `Pack ${packId}`,
+      img: {
+        front: {
+          url: `${BASE_URL}/cards/series1/09.png`,
+          alt: `Front of Pack ${packId}`,
+        },
+        back: {
+          url: `${BASE_URL}/pack1.png`,
+          alt: `Back of Pack ${packId}`,
+        },
+      },
+      cards: generateCards(packId, cardCount),
+    };
+  });
+};

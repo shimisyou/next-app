@@ -2,7 +2,7 @@
 
 import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
 import { PackSwiperContainer } from '@/features/TCG/components/PackSwiper/PackSwiperContainer';
-import { generateMockPacksWithCacheBuster } from '@/features/TCG/mocks/packs';
+import { generateMockPacks } from '@/features/TCG/mocks/packs';
 import { Pack } from '@/features/TCG/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ const OpenPackPage = () => {
 
   useEffect(() => {
     // クライアントサイドでモックデータを生成
-    const generatedPacks = generateMockPacksWithCacheBuster();
+    const generatedPacks = generateMockPacks();
     setPacks(generatedPacks);
   }, []);
 

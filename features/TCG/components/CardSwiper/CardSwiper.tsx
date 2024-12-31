@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { EffectCards, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Card as CardType } from '../../types';
+import { saveCardsToLocalStorage } from '../../utils/localStorage';
 import { TCGCard } from '../TCGCard/TCGCard';
 
 type CardSwiperProps = {
@@ -17,6 +18,7 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
 
   const handleReset = () => {
     onClose();
+    saveCardsToLocalStorage(cards);
     setIsEnd(false);
   };
   const handleReachEnd = () => {
@@ -93,7 +95,7 @@ export const CardSwiper = ({ cards, onClose }: CardSwiperProps) => {
                   overflow: 'visible',
                 }}
               >
-                <TCGCard card={card} onClick={() => console.log(card)} />
+                <TCGCard card={card} onClick={() => {}} />
               </SwiperSlide>
             ))}
           </Swiper>

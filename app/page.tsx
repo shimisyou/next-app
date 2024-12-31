@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material';
+import { NeumorphicText } from '@/components/elements/Text/NeumorphicText/NeumorphicText';
+import { Box } from '@mui/material';
 
 export default function Home() {
   return (
@@ -7,30 +8,18 @@ export default function Home() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
-        bgcolor: '#e0e0e0',
       }}
     >
-      <Box
+      <NeumorphicText
+        variant="h6"
         sx={{
-          bgcolor: '#f0f0f0',
-          borderRadius: '16px',
-          boxShadow: '10px 10px 30px #d1d1d1, -10px -10px 30px #ffffff',
-          p: { xs: 2, md: 3 },
-          textAlign: 'center',
+          color: '#333',
+          fontWeight: 'bold',
+          textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            color: '#333',
-            fontWeight: 'bold',
-            textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
-          }}
-        >
-          このページは作成中
-        </Typography>
-      </Box>
+        このページは作成中です
+      </NeumorphicText>
     </Box>
   );
 }

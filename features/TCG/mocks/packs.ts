@@ -57,7 +57,7 @@ export const generateCards = (cardCount: number) => {
       id: generateUniqueId(), // 一意なIDを生成
       name: card.name,
       rarity: rarityMapping[internalRarity],
-      img: card.img,
+      img: `${BASE_URL}/card.img`,
     };
   });
 };

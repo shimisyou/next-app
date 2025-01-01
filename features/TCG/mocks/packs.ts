@@ -19,6 +19,10 @@ const LOCAL_STORAGE_COUNTER_KEY = 'globalCardIdCounter';
 
 // 一意なIDを生成
 const generateUniqueId = (): number => {
+  if (typeof window === 'undefined') {
+    // サーバーサイドでは固定値を返す
+    return Math.floor(Math.random() * 100000);
+  }
   const currentCounter = parseInt(
     localStorage.getItem(LOCAL_STORAGE_COUNTER_KEY) || '0',
     10

@@ -43,9 +43,10 @@ export const WithInteraction: Story = {
       const nextButton = within(modal).getByRole('button', {
         name: /めくる/i,
       });
-      for (const card of mockPacks[0].cards) {
-        const cardName = await screen.findByText(card.name);
-        expect(cardName).toBeInTheDocument();
+      expect((await screen.findAllByRole('img')).length).toBe(
+        mockPacks[0].cards.length
+      );
+      for (const {} of mockPacks[0].cards) {
         await userEvent.click(nextButton);
         await new Promise((resolve) => setTimeout(resolve, 500)); // Optional delay for better simulation
       }

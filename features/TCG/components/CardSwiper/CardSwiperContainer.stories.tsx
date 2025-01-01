@@ -7,7 +7,7 @@ const meta: Meta<typeof CardSwiperContainer> = {
   title: 'features/TCG/CardSwiper/CardSwiperContainer',
   component: CardSwiperContainer,
   args: {
-    cards: generateCards(1, 5),
+    cards: generateCards(5),
   },
 };
 
@@ -19,9 +19,9 @@ export const Default: Story = {};
 
 export const WithInteraction: Story = {
   args: {
-    cards: generateCards(1, 5),
+    cards: generateCards(5),
   },
-  play: async ({  args, step }) => {
+  play: async ({ args, step }) => {
     await step('ナビゲーションボタンでスライドを進める', async () => {
       const modal = screen.getByRole('dialog');
       const nextButton = within(modal).getByRole('button', { name: /めくる/i });

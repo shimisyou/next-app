@@ -8,14 +8,19 @@ import { Box } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const OpenPackPage = () => {
+const useMockPacks = () => {
   const [packs, setPacks] = useState<Pack[]>([]);
 
   useEffect(() => {
-    // クライアントサイドでモックデータを生成
     const generatedPacks = generateMockPacks();
     setPacks(generatedPacks);
   }, []);
+
+  return packs;
+};
+
+const OpenPackPage = () => {
+  const packs = useMockPacks();
 
   if (!packs.length) {
     return <div>Loading packs...</div>;

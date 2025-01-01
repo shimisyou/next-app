@@ -4,6 +4,7 @@ import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/Neum
 import { PackSwiperContainer } from '@/features/TCG/components/PackSwiper/PackSwiperContainer';
 import { generateMockPacks } from '@/features/TCG/mocks/packs';
 import { Pack } from '@/features/TCG/types';
+import { Box } from '@mui/material';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -22,9 +23,11 @@ const OpenPackPage = () => {
 
   return (
     <>
-      <Link href="/tcg/card" passHref>
-        <NeumorphicButton>カード一覧へ</NeumorphicButton>
-      </Link>
+      <Box sx={{ px: 2 }}>
+        <Link href="/tcg/card" passHref>
+          <NeumorphicButton>カード一覧へ</NeumorphicButton>
+        </Link>
+      </Box>
       <PackSwiperContainer
         packs={packs}
         fallback={<div>Loading packs...</div>}

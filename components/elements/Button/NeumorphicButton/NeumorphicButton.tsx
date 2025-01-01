@@ -4,7 +4,11 @@ interface NeumorphicButtonProps extends ButtonProps {
   children?: React.ReactNode;
 }
 
-const NeumorphicButton = ({ children, ...props }: NeumorphicButtonProps) => {
+const NeumorphicButton = ({
+  children,
+  sx = {},
+  ...props
+}: NeumorphicButtonProps) => {
   return (
     <Button
       sx={{
@@ -16,11 +20,11 @@ const NeumorphicButton = ({ children, ...props }: NeumorphicButtonProps) => {
         '&:hover': {
           bgcolor: '#eaeaea', // NeumorphicIconButtonと同じホバー時の背景色
         },
+        ...sx,
       }}
       {...props}
     >
       <Typography
-        variant="body1"
         sx={{
           fontWeight: 'bold',
           textShadow: '0 0 5px rgba(0, 0, 0, 0.2)',

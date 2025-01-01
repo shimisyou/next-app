@@ -22,8 +22,8 @@ const CardWithReflection = ({
   <Box
     sx={{
       position: 'relative',
-      width: { xs: '150px', md: '200px' },
-      height: { xs: '280px', md: '380px' },
+      width: { xs: '120px', md: '200px' },
+      height: { xs: '220px', md: '380px' },
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -34,7 +34,7 @@ const CardWithReflection = ({
     <Card
       sx={{
         width: '100%',
-        height: { xs: '220px', md: '300px' },
+        height: { xs: '180px', md: '300px' },
         overflow: 'hidden',
         zIndex: 2,
         borderRadius: '12px',
@@ -80,8 +80,8 @@ const CardWithReflection = ({
     <Box
       sx={{
         position: 'absolute',
-        top: { xs: '240px', md: '320px' },
-        width: { xs: '150px', md: '200px' },
+        top: { xs: '190px', md: '320px' },
+        width: { xs: '120px', md: '200px' },
         height: { xs: '40px', md: '60px' },
         overflow: 'hidden',
         transform: 'scaleY(-1)',
@@ -106,14 +106,15 @@ export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
   return (
     <Box
       sx={{
-        width: { xs: '150px', md: '200px' },
-        height: { xs: '280px', md: '380px' },
+        width: { xs: '120px', md: '200px' },
+        height: { xs: '230px', md: '380px' },
         margin: '0 auto', // 中央に配置
       }}
     >
       <Swiper
         effect={'flip'}
         grabCursor
+        nested
         modules={[EffectFlip]}
         flipEffect={{
           slideShadows: false,

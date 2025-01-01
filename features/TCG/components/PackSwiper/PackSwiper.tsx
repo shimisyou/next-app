@@ -20,8 +20,8 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        gap: 2, // 間隔を追加
-        padding: 2, // 外側の余白
+        gap: 2,
+        paddingX: 2,
       }}
     >
       <Card
@@ -43,8 +43,7 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
             </Box>
           }
         />
-        <CardContent sx={{ padding: '16px' }}>
-          {' '}
+        <CardContent sx={{ padding: 1, pb: 0 }}>
           {/* コンテンツに適度な余白 */}
           <CoverFlowSwiper
             content={packs.map((pack) => (
@@ -56,7 +55,7 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
         <CardActions
           sx={{
             justifyContent: 'center',
-            padding: '16px', // アクション部分に余白
+            pb: 2,
           }}
         >
           <NeumorphicButton onClick={onOpenPack}>開封</NeumorphicButton>

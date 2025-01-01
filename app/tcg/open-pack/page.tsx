@@ -12,8 +12,11 @@ const useMockPacks = () => {
   const [packs, setPacks] = useState<Pack[]>([]);
 
   useEffect(() => {
-    const generatedPacks = generateMockPacks();
-    setPacks(generatedPacks);
+    if (typeof window !== 'undefined') {
+      // クライアントサイドでのみ実行
+      const generatedPacks = generateMockPacks();
+      setPacks(generatedPacks);
+    }
   }, []);
 
   return packs;

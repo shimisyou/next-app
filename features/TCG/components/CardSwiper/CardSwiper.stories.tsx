@@ -6,7 +6,7 @@ const meta: Meta<typeof CardSwiper> = {
   title: 'features/TCG/CardSwiper/CardSwiper',
   component: CardSwiper,
   args: {
-    cards: generateCards(1, 5),
+    cards: generateCards(5),
   },
 };
 

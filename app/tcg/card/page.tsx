@@ -2,7 +2,7 @@
 
 import { TCGCard } from '@/features/TCG/components/TCGCard/TCGCard';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import NeumorphicButton from '@/components/elements/Button/NeumorphicButton/NeumorphicButton';
@@ -64,7 +64,7 @@ const CardListPage = () => {
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 2,
+          gap: 3,
           justifyContent: 'center',
           marginTop: '16px', // 上下にスペースを追加
         }}
@@ -77,31 +77,32 @@ const CardListPage = () => {
               display: 'inline-block',
             }}
           >
-            <IconButton
+            <NeumorphicIconButton
               onClick={() => handleDelete(card.id)}
               sx={{
                 position: 'absolute',
-                top: '8px',
-                right: '8px',
+                top: '-8px',
+                right: '-8px',
                 zIndex: 10,
-                bgcolor: '#ffffff',
-                '&:hover': { bgcolor: '#f5f5f5' },
+                width: '25px',
+                height: '25px',
               }}
             >
-              <DeleteIcon fontSize="small" />
-            </IconButton>
+              <DeleteIcon fontSize="inherit" sx={{ fontSize: '15px' }} />
+            </NeumorphicIconButton>
             <TCGCard card={card} />
             <Typography
               sx={{
                 position: 'absolute',
                 bottom: '-8px',
-                right: '8px',
+                right: '-4px',
                 backgroundColor: '#ffffff',
                 borderRadius: '4px',
                 padding: '2px 4px',
                 color: 'gray',
-                fontSize: '0.8rem',
+                fontSize: '0.6rem',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                zIndex: 10,
               }}
             >
               x{card.count}

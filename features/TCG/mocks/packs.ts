@@ -1,54 +1,80 @@
 import { Pack } from '../types';
+import { cardsData } from './cardsData';
 
 // ベースURLをパブリック環境変数から取得
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '/next-app/storybook';
 
+// レアリティマッピング
+const rarityMapping = {
+  ultraRare: 'ultra-rare',
+  superRare: 'super-rare',
+  rare: 'rare',
+  common: 'common',
+} as const;
+
+type InternalRarity = keyof typeof rarityMapping;
+
+// ローカルストレージのカウンターキー
+const LOCAL_STORAGE_COUNTER_KEY = 'globalCardIdCounter';
+
+// 一意なIDを生成
+const generateUniqueId = (): number => {
+  const currentCounter = parseInt(
+    localStorage.getItem(LOCAL_STORAGE_COUNTER_KEY) || '0',
+    10
+  );
+  const newCounter = currentCounter + 1;
+  localStorage.setItem(LOCAL_STORAGE_COUNTER_KEY, newCounter.toString());
+  return newCounter;
+};
+
 // ランダムなレアリティを生成
-const generateRandomRarity = ():
-  | 'ultra-rare'
-  | 'rare'
-  | 'super-rare'
-  | 'common' => {
+const generateRandomRarity = (): InternalRarity => {
   const random = Math.random();
-  if (random <= 0.01) return 'ultra-rare'; // 1%
-  if (random <= 0.1) return 'super-rare'; // 10%
+  if (random <= 0.01) return 'ultraRare'; // 1%
+  if (random <= 0.1) return 'superRare'; // 10%
   if (random <= 0.5) return 'rare'; // 30%
   return 'common'; // 残りは common
 };
 
+// ランダムなカードを取得
+const getRandomCard = (rarity: InternalRarity) => {
+  const cards = cardsData[rarity];
+  const randomIndex = Math.floor(Math.random() * cards.length);
+  return cards[randomIndex];
+};
+
 // カードデータを生成
-export const generateCards = (packId: number, cardCount: number) => {
-  return Array.from({ length: cardCount }, (_, index) => {
-    const cardId = packId * 100 + index + 1; // idをnumberに変更
-    const randomImageNumber = Math.floor(Math.random() * 10) + 1; // 1～10の範囲でランダムな数字を生成
+export const generateCards = (cardCount: number) => {
+  return Array.from({ length: cardCount }, () => {
+    const internalRarity = generateRandomRarity();
+    const card = getRandomCard(internalRarity);
     return {
-      id: cardId,
-      name: `Card ${cardId}`,
-      rarity: generateRandomRarity(),
-      img: `${BASE_URL}/cards/series1/${String(randomImageNumber).padStart(
-        2,
-        '0'
-      )}.png`,
+      id: generateUniqueId(), // 一意なIDを生成
+      name: card.name,
+      rarity: rarityMapping[internalRarity],
+      img: card.img,
     };
   });
 };
 
-export const mockPacks: Pack[] = Array.from({ length: 10 }, (_, index) => {
-  const packId = index + 1;
+// モックパックを生成
+export const mockPacks: Pack[] = Array.from({ length: 10 }, () => {
+  const packId = generateUniqueId();
   return {
     id: packId,
     name: `Pack ${packId}`,
     img: {
       front: {
-        url: `${BASE_URL}/cards/series1/09.png`,
+        url: `${BASE_URL}/cards/series1/pack-front.png`,
         alt: `Front of Pack ${packId}`,
       },
       back: {
-        url: `${BASE_URL}/pack1.png`,
+        url: `${BASE_URL}/cards/series1/pack-back.png`,
         alt: `Back of Pack ${packId}`,
       },
     },
-    cards: generateCards(packId, 5), // 5枚固定
+    cards: generateCards(5), // 5枚固定
   };
 });
 
@@ -58,21 +84,21 @@ export const generateMockPacks = (
   cardCount: number = 5
 ): Pack[] => {
   return Array.from({ length: packCount }, () => {
-    const packId = Math.floor(Math.random() * 10000); // ランダムなパックIDを生成
+    const packId = generateUniqueId();
     return {
       id: packId,
       name: `Pack ${packId}`,
       img: {
         front: {
-          url: `${BASE_URL}/cards/series1/09.png`,
+          url: `${BASE_URL}/cards/series1/pack-front.png`,
           alt: `Front of Pack ${packId}`,
         },
         back: {
-          url: `${BASE_URL}/pack1.png`,
+          url: `${BASE_URL}/cards/series1/pack-back.png`,
           alt: `Back of Pack ${packId}`,
         },
       },
-      cards: generateCards(packId, cardCount),
+      cards: generateCards(cardCount),
     };
   });
 };

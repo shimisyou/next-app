@@ -1,8 +1,9 @@
 import { Card } from '../types';
 
+const LOCAL_STORAGE_COUNTER_KEY = 'globalCardIdCounter'; // IDカウンターキー
 const LOCAL_STORAGE_KEY = 'collectedCards';
 
-type StoredCard = Card & { count: number };
+type StoredCard = Card & { count: number; createdAt: string }; // 作成日時を持つカード型
 
 // カードをローカルストレージに保存
 export const saveCardsToLocalStorage = (cards: Card[]) => {
@@ -20,7 +21,11 @@ export const saveCardsToLocalStorage = (cards: Card[]) => {
     if (existingCard) {
       existingCard.count += 1; // 重複する場合はカウントを更新
     } else {
-      updatedCards.push({ ...newCard, count: 1 }); // 新しいカードを追加
+      updatedCards.push({
+        ...newCard,
+        count: 1,
+        createdAt: new Date().toISOString(), // 新規カードに作成日時を設定
+      });
     }
   });
 
@@ -41,5 +46,6 @@ export const deleteCardFromLocalStorage = (cardId: number) => {
 
 // ローカルストレージをクリア（全削除）
 export const clearLocalStorage = () => {
+  localStorage.removeItem(LOCAL_STORAGE_COUNTER_KEY); // IDカウンターを削除
   localStorage.removeItem(LOCAL_STORAGE_KEY);
 };

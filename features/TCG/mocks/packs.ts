@@ -36,8 +36,8 @@ const generateUniqueId = (): number => {
 const generateRandomRarity = (): InternalRarity => {
   const random = Math.random();
   if (random <= 0.01) return 'ultraRare'; // 1%
-  if (random <= 0.1) return 'superRare'; // 10%
-  if (random <= 0.5) return 'rare'; // 30%
+  if (random <= 0.05) return 'superRare'; // 5%
+  if (random <= 0.1) return 'rare'; // 10%
   return 'common'; // 残りは common
 };
 

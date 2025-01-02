@@ -48,9 +48,12 @@ const CardListPage = () => {
                 position: 'absolute',
                 top: '-8px',
                 right: '-8px',
+                zIndex: 10,
+                width: '25px',
+                height: '25px',
               }}
             >
-              <DeleteIcon fontSize="small" />
+              <DeleteIcon fontSize="small" sx={{ fontSize: '15px' }} />
             </NeumorphicIconButton>
             <TCGCard card={card} />
             <Typography
@@ -64,6 +67,7 @@ const CardListPage = () => {
                 color: 'gray',
                 fontSize: '0.6rem',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                zIndex: 10,
               }}
             >
               x{card.count}

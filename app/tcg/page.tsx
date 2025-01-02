@@ -1,4 +1,4 @@
-import NavigationCard from '@/components/elements/NavigationCard/NavigationCard';
+import NavigationCard from '@/components/elements/Navigation/NavigationCard/NavigationCard';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import Grid2 from '@mui/material/Grid2'; // 正しいGrid2のインポート

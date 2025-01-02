@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { expect, screen, userEvent, within } from '@storybook/test';
+import { expect, fn, screen, userEvent, within } from '@storybook/test';
 import { generateCards } from '../../mocks/packs';
 import { CardSwiperContainer } from './CardSwiperContainer';
 
@@ -7,6 +7,7 @@ const meta: Meta<typeof CardSwiperContainer> = {
   component: CardSwiperContainer,
   args: {
     cards: generateCards(5),
+    onComplete: fn(),
   },
 };
 

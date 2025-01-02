@@ -1,14 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { expect, screen, userEvent, within } from '@storybook/test';
+import { expect, screen, userEvent, waitFor, within } from '@storybook/test';
 import PackSwiperContainer from './PackSwiperContainer';
 
 import { mockPacks } from '../../mocks/packs';
 
 const meta = {
   component: PackSwiperContainer,
-  args: {
-    packs: mockPacks,
-  },
+  args: {},
 } satisfies Meta<typeof PackSwiperContainer>;
 
 export default meta;
@@ -17,24 +15,26 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    packs: mockPacks,
     fallback: null,
   },
 };
 
 export const WithInteraction: Story = {
   args: {
-    packs: mockPacks,
-    fallback: <div>Loading...</div>,
+    fallback: null,
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Op
 
     await step('パックを開く', async () => {
-      const openButton = await canvas.getByRole('button', {
-        name: /開封/i,
-      });
+      const openButton = await canvas.findByRole('button', { name: /開封/i });
       await userEvent.click(openButton);
+
+      // モーダル描画を待つ
+      await waitFor(() => {
+        expect(screen.getByRole('dialog')).toBeInTheDocument();
+      });
     });
 
     await step('ナビゲーションボタンでスライドを進める', async () => {

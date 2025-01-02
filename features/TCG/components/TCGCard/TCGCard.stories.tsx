@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { cardsData } from '../../mocks/cardsData';
 import { Card } from '../../types';
 import { TCGCard } from './TCGCard';
 
@@ -35,7 +36,12 @@ type Story = StoryObj<typeof TCGCard>;
 **/
 export const Common: Story = {
   args: {
-    card: mockCard,
+    card: {
+      ...mockCard,
+      rarity: 'common',
+      name: 'Common Card',
+      img: cardsData.common[0].img,
+    },
   },
 };
 
@@ -48,6 +54,7 @@ export const Rare: Story = {
       ...mockCard,
       rarity: 'rare',
       name: 'Rare Card',
+      img: cardsData.rare[0].img,
     },
   },
 };
@@ -62,7 +69,7 @@ export const SuperRare: Story = {
       ...mockCard,
       rarity: 'super-rare',
       name: 'Super Rare Card',
-      img: './cards/series1/09.png',
+      img: cardsData.superRare[0].img,
     },
   },
 };
@@ -78,7 +85,7 @@ export const UltraRare: Story = {
       ...mockCard,
       rarity: 'ultra-rare',
       name: 'Ultra Rare Card',
-      img: './cards/series1/09.png',
+      img: cardsData.ultraRare[0].img,
     },
   },
 };

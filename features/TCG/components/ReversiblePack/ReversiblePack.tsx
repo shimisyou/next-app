@@ -7,9 +7,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ReversibleImage } from '../../types';
 
 type ReversiblePackProps = {
+  /**
+   * 表面と裏面の画像データを含むオブジェクト。
+   */
   packImg: ReversibleImage;
 };
 
+/**
+ * Reflection付きのカードを描画するコンポーネント。
+ *
+ * @param {Object} props - コンポーネントのプロパティ。
+ * @param {string} props.url - カード画像のURL。
+ * @param {string} props.alt - カード画像の代替テキスト。
+ * @param {boolean} props.showText - カードにテキスト「Card Game」を表示するかどうか。
+ * @returns {JSX.Element} Reflection付きのカード。
+ */
 const CardWithReflection = ({
   url,
   alt,
@@ -18,7 +30,7 @@ const CardWithReflection = ({
   url: string;
   alt: string;
   showText: boolean;
-}) => (
+}): JSX.Element => (
   <Box
     sx={{
       position: 'relative',
@@ -62,11 +74,11 @@ const CardWithReflection = ({
           <Box
             sx={{
               position: 'absolute',
-              bottom: '40px', // テキストの位置をさらに上に調整
+              bottom: '40px',
               width: '100%',
               textAlign: 'center',
               color: 'white',
-              fontSize: { xs: '14px', md: '18px' }, // フォントサイズを調整
+              fontSize: { xs: '14px', md: '18px' },
               fontWeight: 'bold',
               textShadow: '0 0 5px rgba(0, 0, 0, 0.5)',
             }}
@@ -102,7 +114,16 @@ const CardWithReflection = ({
   </Box>
 );
 
-export const ReversiblePack = ({ packImg }: ReversiblePackProps) => {
+/**
+ * 表面と裏面の画像を切り替えられるパックのコンポーネント。
+ * Swiperを使用してスワイプ可能なインターフェースを提供します。
+ *
+ * @param {ReversiblePackProps} props - コンポーネントのプロパティ。
+ * @returns {JSX.Element} スワイプ可能なリバーシブルパック。
+ */
+export const ReversiblePack = ({
+  packImg,
+}: ReversiblePackProps): JSX.Element => {
   return (
     <Box
       sx={{

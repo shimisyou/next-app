@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import MarkdownView from './MarkdownView';
 const meta = {
-  title: 'components/elements/MarkdownView',
   tags: ['autodocs'],
   component: MarkdownView,
 } satisfies Meta<typeof MarkdownView>;

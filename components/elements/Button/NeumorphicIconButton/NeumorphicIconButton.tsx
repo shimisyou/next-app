@@ -1,30 +1,46 @@
-import { IconButton, IconButtonProps } from '@mui/material';
+import { IconButton, IconButtonProps, Theme } from '@mui/material';
+import { SxProps } from '@mui/system';
+import { ReactNode, useMemo } from 'react';
 
 interface NeumorphicIconButtonProps extends IconButtonProps {
-  isInset?: boolean; // true: インセット影, false: 通常影
-  children?: React.ReactNode;
+  /**
+   * インセット影を使用するかどうかを指定します。
+   */
+  isInset?: boolean;
+  /**
+   * ボタン内部にレンダリングする子要素。
+   */
+  children?: ReactNode;
+  /**
+   * IconButtonに追加で充てるスタイル。
+   */
+  sx?: SxProps<Theme>;
 }
 
 const NeumorphicIconButton = ({
-  isInset = false, // デフォルトは通常影
-  children,
+  isInset = false,
   sx = {},
+  children,
   ...props
 }: NeumorphicIconButtonProps) => {
+  const boxShadow = useMemo(
+    () =>
+      isInset
+        ? 'inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff'
+        : '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff',
+    [isInset]
+  );
+
   return (
     <IconButton
       sx={{
         bgcolor: '#f5f5f5',
         borderRadius: '50%',
-        boxShadow: isInset
-          ? 'inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff' // インセット影
-          : '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff', // 通常影
-        '&:hover': {
-          bgcolor: '#eaeaea', // ホバー時の色
-        },
+        boxShadow,
+        '&:hover': { bgcolor: '#eaeaea' },
         width: { xs: 48, md: 64 },
         height: { xs: 48, md: 64 },
-        ...sx, // カスタムスタイルをマージ
+        ...sx,
       }}
       {...props}
     >

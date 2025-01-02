@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import { CoverFlowSwiper } from './CoverFlowSwiper';
 
 const meta = {
-  title: 'components/elements/CoverFlowSwiper',
   component: CoverFlowSwiper,
 } satisfies Meta<typeof CoverFlowSwiper>;
 

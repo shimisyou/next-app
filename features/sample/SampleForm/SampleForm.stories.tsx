@@ -3,7 +3,6 @@ import { fn } from '@storybook/test';
 import { SampleForm } from './SampleForm';
 
 const meta = {
-  title: 'features/sample/SampleForm',
   component: SampleForm,
 } satisfies Meta<typeof SampleForm>;
 

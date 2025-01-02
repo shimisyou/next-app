@@ -5,7 +5,6 @@ import PackSwiperContainer from './PackSwiperContainer';
 import { mockPacks } from '../../mocks/packs';
 
 const meta = {
-  title: 'features/TCG/PackSwiper/PackSwiperContainer',
   component: PackSwiperContainer,
   args: {
     packs: mockPacks,

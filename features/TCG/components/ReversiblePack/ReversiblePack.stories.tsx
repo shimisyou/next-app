@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ReversiblePack } from './ReversiblePack';
 
 const meta = {
-  title: 'features/TCG/ReversiblePack',
   component: ReversiblePack,
 } satisfies Meta<typeof ReversiblePack>;
 

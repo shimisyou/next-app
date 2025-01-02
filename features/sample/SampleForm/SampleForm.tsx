@@ -1,6 +1,6 @@
-import { MarkdownEditor } from "@/components/elements/MarkdownEditor/MarkdownEditor";
-import { Button, Stack, TextField } from "@mui/material";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { MarkdownEditor } from '@/components/elements/Markdown/MarkdownEditor/MarkdownEditor';
+import { Button, Stack, TextField } from '@mui/material';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 interface SampleForm {
   title: string;
@@ -9,7 +9,7 @@ interface SampleForm {
 
 export const SampleForm = () => {
   const { control, handleSubmit, getValues } = useForm<SampleForm>({
-    defaultValues: { markdown: "", title: "" },
+    defaultValues: { markdown: '', title: '' },
   });
 
   const onSubmit: SubmitHandler<SampleForm> = (data) => {
@@ -29,7 +29,7 @@ export const SampleForm = () => {
             <TextField
               label="タイトル"
               required
-              defaultValue={getValues("title")}
+              defaultValue={getValues('title')}
               onChange={field.onChange}
             />
           )}
@@ -40,7 +40,7 @@ export const SampleForm = () => {
           render={({ field }) => (
             <MarkdownEditor
               {...field}
-              defaultValue={getValues("markdown")}
+              defaultValue={getValues('markdown')}
               onChange={field.onChange}
               placeholder="本文を入力してくだい"
             />

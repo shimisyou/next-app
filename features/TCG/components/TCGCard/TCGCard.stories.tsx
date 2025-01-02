@@ -19,7 +19,6 @@ const mockCard: Card = {
  * - ultra-rare: 最高レアリティのカード
  */
 const meta: Meta<typeof TCGCard> = {
-  title: 'features/TCG/TCGCard',
   component: TCGCard,
   tags: ['autodocs'],
   parameters: {

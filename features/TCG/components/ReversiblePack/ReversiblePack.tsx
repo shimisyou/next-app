@@ -1,5 +1,6 @@
 import { Box, Card, CardContent } from '@mui/material';
 import Image from 'next/image';
+import { JSX } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-flip';
 import { EffectFlip } from 'swiper/modules';

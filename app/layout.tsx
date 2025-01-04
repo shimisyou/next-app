@@ -34,8 +34,8 @@ export default function RootLayout({
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            pt: { xs: 12, md: 16 },
-            px: { xs: 2, md: 3 },
+            pt: { xs: 12, md: 14 }, // 余白を減らす
+            px: { xs: 1, md: 2 }, // 横のパディングも控えめに
           }}
         >
           <Header />
@@ -45,9 +45,9 @@ export default function RootLayout({
               bgcolor: '#f5f5f5', // `Header`と合わせて統一
               borderRadius: '16px',
               boxShadow: '4px 4px 8px #e0e0e0, -4px -4px 8px #ffffff',
-              padding: { xs: 2, md: 3 },
+              padding: { xs: 1.5, md: 2.5 }, // コンテンツのパディングも少し減らす
               flex: 1,
-              mt: 3,
+              mt: 2, // マージントップを縮小
               overflow: 'hidden',
             }}
           >

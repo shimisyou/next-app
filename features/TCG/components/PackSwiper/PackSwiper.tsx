@@ -58,7 +58,7 @@ const PackSwiper = ({ packs, onSlideChange, onOpenPack }: PackSwiperProps) => {
             pb: 2,
           }}
         >
-          <NeumorphicButton onClick={onOpenPack}>開封</NeumorphicButton>
+          <NeumorphicButton text="開封" onClick={onOpenPack} />
         </CardActions>
       </Card>
     </Box>

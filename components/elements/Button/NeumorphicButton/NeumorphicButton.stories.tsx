@@ -5,6 +5,9 @@ import NeumorphicButton from './NeumorphicButton';
 const meta = {
   component: NeumorphicButton,
   tags: ['autodocs'],
+  args: {
+    text: 'ボタン',
+  },
 } satisfies Meta<typeof NeumorphicButton>;
 
 export default meta;

@@ -1,9 +1,7 @@
-import { Card } from '../types';
+import { Card, StoredCard } from '../types';
 
 const LOCAL_STORAGE_COUNTER_KEY = 'globalCardIdCounter'; // IDカウンターキー
 const LOCAL_STORAGE_KEY = 'collectedCards';
-
-type StoredCard = Card & { count: number; createdAt: string }; // 作成日時を持つカード型
 
 // カードをローカルストレージに保存
 export const saveCardsToLocalStorage = (cards: Card[]) => {

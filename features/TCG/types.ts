@@ -22,4 +22,6 @@ type Pack = {
   cards: Card[]; // 含まれるカード
 };
 
-export type { Card, Pack, PackImage, ReversibleImage };
+type StoredCard = Card & { count: number; createdAt: string }; //ローカルストレージように追加した型
+
+export type { Card, Pack, PackImage, ReversibleImage, StoredCard };

@@ -98,16 +98,13 @@ export const CardSwiper = ({
         >
           {!isEnd ? (
             <NeumorphicButton
+              text="めくる"
               key="next"
               aria-label="めくる"
               className="swiper-button-next"
-            >
-              めくる
-            </NeumorphicButton>
+            />
           ) : (
-            <NeumorphicButton key="end" onClick={onReset}>
-              終了
-            </NeumorphicButton>
+            <NeumorphicButton text="終了" key="end" onClick={onReset} />
           )}
         </CardActions>
       </Card>

@@ -28,13 +28,11 @@ export const Header = () => {
           right: 0,
           zIndex: 1000, // 他のコンテンツの上に表示
           bgcolor: '#f5f5f5', // 柔らかな背景色
-          borderRadius: '12px',
+          // borderRadius: '12px',
           boxShadow: '4px 4px 8px #e0e0e0, -4px -4px 8px #ffffff', // 控えめな影
           width: '100%',
           maxWidth: '1200px',
-          p: { xs: 2, md: 3 },
-          mt: 2, // 上部に余白
-          mb: 3,
+          p: { xs: 2, md: 2 },
           display: 'flex',
           justifyContent: 'space-between', // 左右に配置
           alignItems: 'center',
@@ -45,25 +43,18 @@ export const Header = () => {
         {/* 左側のアイコン */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           {/* サイドバーのトグルボタン */}
-          <NeumorphicIconButton onClick={toggleSidebar}>
-            <MenuIcon sx={{ fontSize: 28, color: '#444' }} />
-          </NeumorphicIconButton>
+          <NeumorphicIconButton onClick={toggleSidebar} icon={<MenuIcon />} />
+
           <Link href="/" passHref>
-            <NeumorphicIconButton>
-              <HomeIcon sx={{ color: '#444', fontSize: { xs: 28, md: 36 } }} />
-            </NeumorphicIconButton>
+            <NeumorphicIconButton icon={<HomeIcon />} />
           </Link>
           <Link href="/tcg" passHref>
-            <NeumorphicIconButton>
-              <Style sx={{ color: '#444', fontSize: { xs: 28, md: 36 } }} />
-            </NeumorphicIconButton>
+            <NeumorphicIconButton icon={<Style />} />
           </Link>
         </Box>
         {/* 右側のGitHubアイコン */}
         <Link href="https://github.com/shimisyou/next-app" passHref>
-          <NeumorphicIconButton>
-            <GitHubIcon sx={{ color: '#444', fontSize: { xs: 28, md: 36 } }} />
-          </NeumorphicIconButton>
+          <NeumorphicIconButton icon={<GitHubIcon />} />
         </Link>
       </Box>
 

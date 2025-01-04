@@ -1,49 +1,97 @@
 import { Button, ButtonProps, Typography } from '@mui/material';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-interface NeumorphicButtonProps extends ButtonProps {
+interface NeumorphicButtonProps extends Omit<ButtonProps, 'variant'> {
   /**
-   * ボタン内部に表示する子要素。
-   * テキスト、アイコン、または他のReact要素が渡せます。
+   * ボタンに表示するテキスト（必須）。
    */
-  children?: ReactNode;
+  text: string;
+  /**
+   * カラータイプを指定 ('normal', 'danger', 'primary')。
+   */
+  colorVariant?: 'normal' | 'danger' | 'primary';
+  /**
+   * サイズを指定 ('small', 'medium', 'large')。
+   */
+  size?: 'small' | 'medium' | 'large';
 }
 
 /**
+ * カラーごとのスタイル設定。
+ */
+const colorStyles = {
+  normal: {
+    backgroundColor: '#f5f5f5',
+    textColor: '#333',
+    shadow: '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff',
+  },
+  danger: {
+    backgroundColor: '#ffe5e5',
+    textColor: '#d32f2f',
+    shadow: '6px 6px 12px #d1b1b1, -6px -6px 12px #ffffff',
+  },
+  primary: {
+    backgroundColor: '#e3f2fd',
+    textColor: '#1976d2',
+    shadow: '6px 6px 12px #b1c1d1, -6px -6px 12px #ffffff',
+  },
+};
+
+/**
+ * サイズごとのスタイル設定。
+ */
+const sizeStyles = {
+  small: {
+    padding: '6px 12px',
+    fontSize: 10,
+  },
+  medium: {
+    padding: '10px 20px',
+    fontSize: 14,
+  },
+  large: {
+    padding: '14px 28px',
+    fontSize: 18,
+  },
+};
+
+/**
  * Neumorphicスタイルのボタンコンポーネント。
- *
- * このボタンは、立体的な影効果とカスタマイズ可能なスタイルを提供します。
- *
- * @param {NeumorphicButtonProps} props - ボタンのプロパティ。
- * @returns {React.ReactNode} Neumorphicスタイルのボタンコンポーネント。
  */
 const NeumorphicButton = ({
-  children,
+  text,
+  colorVariant = 'normal',
+  size = 'medium',
   sx = {},
   ...props
 }: NeumorphicButtonProps): React.ReactNode => {
+  const colorStyle = colorStyles[colorVariant];
+  const sizeStyle = sizeStyles[size];
+
   return (
     <Button
       sx={{
-        bgcolor: '#f5f5f5', // 背景色
-        borderRadius: '16px', // 丸みを帯びた角
-        boxShadow: '6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff', // Neumorphic効果
-        color: '#333', // テキストの色
-        padding: '10px 20px', // 内側の余白
+        bgcolor: colorStyle.backgroundColor,
+        borderRadius: '16px',
+        boxShadow: colorStyle.shadow,
+        color: colorStyle.textColor,
+        padding: sizeStyle.padding,
         '&:hover': {
-          bgcolor: '#eaeaea', // ホバー時の背景色
+          bgcolor: colorStyle.backgroundColor,
+          opacity: 0.9, // ホバー時の透明度を調整
         },
-        ...sx, // 外部から渡されたスタイルをマージ
+        ...sx,
       }}
       {...props}
     >
       <Typography
+        variant="body2"
+        fontSize={sizeStyle.fontSize}
         sx={{
-          fontWeight: 'bold', // 太字
-          textShadow: '0 0 5px rgba(0, 0, 0, 0.2)', // テキストの影
+          fontWeight: 600,
         }}
       >
-        {children}
+        {text}
       </Typography>
     </Button>
   );

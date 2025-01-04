@@ -1,12 +1,11 @@
-import { Card } from '@/features/TCG/types';
+'use client';
+import { StoredCard } from '@/features/TCG/types';
 import {
   clearLocalStorage,
   deleteCardFromLocalStorage,
   getCardsFromLocalStorage,
 } from '@/features/TCG/utils/localStorage';
 import { useEffect, useState } from 'react';
-
-type StoredCard = Card & { count: number };
 
 export const useStoredCards = () => {
   const [cards, setCards] = useState<StoredCard[]>([]);
